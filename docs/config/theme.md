@@ -1,14 +1,14 @@
 ---
-title: Theme
-description: UnoCSS also supports the theming system that you might be familiar with in Tailwind CSS / Windi CSS.
+title: 主题
+description: UnoCSS 同样支持你在 Tailwind CSS / Windi CSS 中可能已经熟悉的主题系统。
 outline: deep
 ---
 
-# Theme
+# 主题
 
-UnoCSS also supports the theming system that you might be familiar with in Tailwind CSS / Windi CSS. At the user level, you can specify the `theme` property in your config, and it will be deep-merged to the default theme.
+UnoCSS 同样支持你在 Tailwind CSS / Windi CSS 中可能已经熟悉的主题系统。在用户层面，你可以在配置中指定 `theme` 属性，它将与默认主题进行深度合并。
 
-## Usage
+## 使用方法
 
 <!--eslint-skip-->
 
@@ -18,20 +18,20 @@ theme: {
   colors: {
     veryCool: '#0000ff', // class="text-very-cool"
     brand: {
-      primary: 'hsl(var(--hue, 217) 78% 51%)', //class="bg-brand-primary"
-      DEFAULT: '#942192' //class="bg-brand"
+      primary: 'hsl(var(--hue, 217) 78% 51%)', // class="bg-brand-primary"
+      DEFAULT: '#942192' // class="bg-brand"
     },
   },
 }
 ```
 
 ::: tip
-During the parsing process, `theme` will always exist in `context`.
+在解析过程中，`theme` 始终会存在于 `context` 中。
 :::
 
-### Usage in `rules`
+### 在 `rules` 中使用
 
-To consume the theme in rules:
+在规则中使用主题：
 
 ```ts
 rules: [
@@ -42,9 +42,9 @@ rules: [
 ]
 ```
 
-### Usage in `variants`
+### 在 `variants` 中使用
 
-To consume the theme in variants:
+在变体中使用主题：
 
 ```ts
 variants: [
@@ -57,9 +57,9 @@ variants: [
 ]
 ```
 
-### Usage in `shortcuts`
+### 在 `shortcuts` 中使用
 
-To consume the theme in dynamic shortcuts:
+在动态快捷方式中使用主题：
 
 ```ts
 shortcuts: [
@@ -70,13 +70,13 @@ shortcuts: [
 ]
 ```
 
-## Breakpoints
+## 断点（Breakpoints）
 
 ::: warning
-When a custom `breakpoints` object is provided the default will be overridden instead of merging.
+当提供自定义的 `breakpoints` 对象时，它会覆盖默认的断点而不是合并。
 :::
 
-With the following example, you will be able to only use the `sm:` and `md:` breakpoint variants:
+以下示例中，你只能使用 `sm:` 和 `md:` 断点变体：
 
 <!--eslint-skip-->
 
@@ -90,7 +90,7 @@ theme: {
 }
 ```
 
-If you want to inherit the `original` theme breakpoints, you can use the `extendTheme`:
+如果你想继承原始主题的断点，可以使用 `extendTheme`：
 
 ```ts
 extendTheme: (theme) => {
@@ -106,10 +106,10 @@ extendTheme: (theme) => {
 ```
 
 ::: info
-`verticalBreakpoints` is same as `breakpoints` but for vertical layout.
+`verticalBreakpoints` 与 `breakpoints` 相同，但用于垂直布局。
 :::
 
-In addition we will sort screen points by size (same unit). For screen points in different units, in order to avoid errors, please use unified units in the configuration.
+此外，我们会根据大小对屏幕断点进行排序（相同单位）。对于不同单位的断点，为了避免错误，请在配置中统一使用相同的单位。
 
 <!--eslint-skip-->
 
@@ -118,7 +118,7 @@ theme: {
   // ...
   breakpoints: {
     sm: '320px',
-    // Because uno does not support comparison sorting of different unit sizes, please convert to the same unit.
+    // 因为 uno 不支持不同单位大小的比较排序，请转换为相同单位。
     // md: '40rem',
     md: `${40 * 16}px`,
     lg: '960px',
@@ -126,11 +126,11 @@ theme: {
 }
 ```
 
-## ExtendTheme
+## extendTheme
 
-`ExtendTheme` allows you to edit the **deeply merged theme** to get the complete theme object.
+`extendTheme` 允许你编辑 **深度合并后的主题**，以获取完整的主题对象。
 
-Custom functions mutate the theme object.
+自定义函数可以直接修改主题对象：
 
 ```ts
 extendTheme: (theme) => {
@@ -141,7 +141,7 @@ extendTheme: (theme) => {
 }
 ```
 
-It's also possible to return a new theme object to completely replace the original one.
+也可以返回一个新的主题对象，从而完全替换原主题：
 
 ```ts
 extendTheme: (theme) => {

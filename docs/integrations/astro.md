@@ -1,13 +1,13 @@
 ---
-title: UnoCSS Astro Integration
-description: The UnoCSS integration for Astro (@unocss/astro).
+title: UnoCSS Astro 集成
+description: 用于 Astro 的 UnoCSS 集成（@unocss/astro）。
 ---
 
-# Astro Integration
+# Astro 集成
 
-The UnoCSS integration for [Astro](https://astro.build/): `@unocss/astro`. Check the [example](https://github.com/unocss/unocss/tree/main/examples/astro).
+用于 [Astro](https://astro.build/) 的 UnoCSS 集成：`@unocss/astro`。请查看 [示例](https://github.com/unocss/unocss/tree/main/examples/astro)。
 
-## Installation
+## 安装
 
 ::: code-group
 
@@ -40,19 +40,19 @@ export default defineConfig({
 })
 ```
 
-Create a `uno.config.ts` file:
+创建一个 `uno.config.ts` 文件：
 
 ```ts [uno.config.ts]
 import { defineConfig } from 'unocss'
 
 export default defineConfig({
-  // ...UnoCSS options
+  // ...UnoCSS 配置项
 })
 ```
 
-### Style Reset
+### 样式重置
 
-By default, [browser style reset](/guide/style-reset) will not be injected. To enable it, install the `@unocss/reset` package:
+默认情况下，不会注入 [浏览器样式重置](/guide/style-reset)。要启用它，请安装 `@unocss/reset` 包：
 
 ::: code-group
 
@@ -74,7 +74,7 @@ bun add -D @unocss/reset
 
 :::
 
-And update your `astro.config.ts`:
+然后更新你的 `astro.config.ts` 文件：
 
 ```ts [astro.config.ts]
 import { defineConfig } from 'astro/config'
@@ -83,15 +83,15 @@ import UnoCSS from 'unocss/astro'
 export default defineConfig({
   integrations: [
     UnoCSS({
-      injectReset: true // or a path to the reset file
+      injectReset: true // 或者指定重置文件的路径
     }),
   ],
 })
 ```
 
-### Usage without presets
+### 不使用预设的用法
 
-This plugin does not come with any default presets.
+该插件不包含任何默认预设。
 
 ::: code-group
 
@@ -123,12 +123,12 @@ export default {
 }
 ```
 
-For more details, please refer to the [Vite plugin](/integrations/vite).
+更多详细信息，请参考 [Vite 插件](/integrations/vite)。
 
 ::: info
-If you are building a meta framework on top of UnoCSS, see [this file](https://github.com/unocss/unocss/blob/main/packages-presets/unocss/src/astro.ts) for an example on how to bind the default presets.
+如果你正在基于 UnoCSS 构建一个元框架，请查看 [此文件](https://github.com/unocss/unocss/blob/main/packages-presets/unocss/src/astro.ts)，了解如何绑定默认预设的示例。
 :::
 
-## Notes
+## 注意事项
 
-[`client:only`](https://docs.astro.build/en/reference/directives-reference/#clientonly) components must be placed in [`components`](https://docs.astro.build/en/core-concepts/project-structure/#srccomponents) folder or added to UnoCSS's `content` config in order to be processed.
+[`client:only`](https://docs.astro.build/en/reference/directives-reference/#clientonly) 组件必须放置在 [`components`](https://docs.astro.build/en/core-concepts/project-structure/#srccomponents) 文件夹中，或添加到 UnoCSS 的 `content` 配置中，以便被处理。

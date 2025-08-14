@@ -1,16 +1,16 @@
 ---
-title: Compile class transformer
-description: Compile group of classes into one class (@unocss/transformer-compile-class)
+title: 编译类转换器
+description: 将一组类编译为一个类（@unocss/transformer-compile-class）
 outline: deep
 ---
 
-# Compile class transformer
+# 编译类转换器
 
 <!-- @unocss-ignore -->
 
-Compile group of classes into one class. Inspired by the [compilation mode](https://windicss.org/posts/modes.html#compilation-mode) of Windi CSS and [issue #948](https://github.com/unocss/unocss/issues/948) by [@UltraCakeBakery](https://github.com/UltraCakeBakery).
+将一组类编译为一个类。灵感来自 [Windi CSS 的编译模式](https://windicss.org/posts/modes.html#compilation-mode) 和 [@UltraCakeBakery](https://github.com/UltraCakeBakery) 提出的 [issue #948](https://github.com/unocss/unocss/issues/948)。
 
-## Installation
+## 安装
 
 ::: code-group
 
@@ -45,7 +45,7 @@ export default defineConfig({
 ```
 
 ::: tip
-This preset is included in the `unocss` package, you can also import it from there:
+该预设已包含在 `unocss` 包中，你也可以从那里导入它：
 
 ```ts
 import { transformerCompileClass } from 'unocss'
@@ -53,11 +53,11 @@ import { transformerCompileClass } from 'unocss'
 
 :::
 
-## Usage
+## 使用方法
 
-Add `:uno:` at the beginning of the class strings to mark them for compilation.
+在类字符串的开头添加 `:uno:` 以标记需要编译的内容。
 
-For example:
+例如：
 
 ```html
 <div class=":uno: text-center sm:text-left">
@@ -65,7 +65,7 @@ For example:
 </div>
 ```
 
-Will be compiled to:
+将会被编译为：
 
 ```html
 <div class="uno-qlmcrp">
@@ -93,17 +93,17 @@ Will be compiled to:
 }
 ```
 
-## Options
+## 选项
 
-You can config the trigger string and prefix for compile class with the options. Refer to [the types](https://github.com/unocss/unocss/blob/main/packages-presets/transformer-compile-class/src/index.ts#L4) for details.
+你可以通过选项配置触发编译类的字符串和前缀。详情请参阅 [类型定义](https://github.com/unocss/unocss/blob/main/packages-presets/transformer-compile-class/src/index.ts#L4)。
 
-## Tooling
+## 工具支持
 
 ### ESLint
 
-There is an eslint rule for enforcing the class compile transformer across the whole project: [@unocss/enforce-class-compile](https://unocss.dev/integrations/eslint#unocss-enforce-class-compile)
+有一个 ESLint 规则可用于在整个项目中强制使用类编译转换器：[@unocss/enforce-class-compile](https://unocss.dev/integrations/eslint#unocss-enforce-class-compile)
 
-**Usage:**
+**使用方法：**
 
 ```json
 {
@@ -114,6 +114,6 @@ There is an eslint rule for enforcing the class compile transformer across the w
 }
 ```
 
-## License
+## 许可证
 
 - MIT License &copy; 2021-PRESENT [Anthony Fu](https://github.com/antfu)

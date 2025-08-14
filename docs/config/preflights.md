@@ -1,11 +1,11 @@
 ---
-title: Preflights
-description: You can inject raw CSS as preflights from the configuration. The resolved theme is available to customize the CSS.
+title: 预检
+description: 你可以从配置中注入原始 CSS 作为预检。解析后的 `theme` 可用于自定义 CSS。
 ---
 
-# Preflights
+# 预检
 
-You can inject raw CSS as preflights from the configuration. The resolved `theme` is available to customize the CSS.
+你可以从配置中注入原始 CSS 作为预检。解析后的 `theme` 可用于自定义 CSS。
 
 <!--eslint-skip-->
 

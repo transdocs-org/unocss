@@ -1,20 +1,20 @@
 ---
-title: Arbitrary Variants Extractor
+title: 任意变体提取器
 ---
 
-# Arbitrary Variants Extractor
+# 任意变体提取器
 
-A more complex extractor to support arbitrary variants for utilities.
+一个更复杂的提取器，用于支持工具类的任意变体。
 
 ```html
 <div class="[&>*]:m-1 [&[open]]:p-2"></div>
 ```
 
-Will be captured with `[&>*]:m-1` and `[&[open]]:p-2` as variants.
+将分别捕获 `[&>*]:m-1` 和 `[&[open]]:p-2` 作为变体。
 
-This extractor is included in [`@unocss/preset-mini`](/presets/mini) as the default extractor. Normally you don't need to install this package manually.
+该提取器作为默认提取器包含在 [`@unocss/preset-mini`](/presets/mini) 中。通常不需要手动安装此包。
 
-## Installation
+## 安装
 
 ::: code-group
 

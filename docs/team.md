@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Meet the Team
-description: The development of UnoCSS is guided by an international team.
+title: 认识团队
+description: UnoCSS 的开发由一个国际化的团队指导。
 ---
 
 <script setup>
@@ -16,18 +16,16 @@ import { teamMembers, teamEmeritiMembers } from './.vitepress/contributors'
 
 <VPTeamPage>
   <VPTeamPageTitle>
-    <template #title>Meet the Team</template>
+    <template #title>认识团队</template>
     <template #lead>
-      The development of UnoCSS is guided by an international team, some of whom
-      have chosen to be featured below.
+      UnoCSS 的开发由一个国际化的团队指导，其中一些成员选择在下方展示他们的信息。
     </template>
   </VPTeamPageTitle>
   <VPTeamMembers :members="teamMembers" />
   <VPTeamPageSection>
-    <template #title>Team Emeriti</template>
+    <template #title>荣誉团队成员</template>
     <template #lead>
-      Here we honor some no-longer-active team members who have made valuable
-      contributions in the past.
+      在这里，我们向一些已不再活跃但曾做出宝贵贡献的前团队成员致敬。
     </template>
     <template #members>
       <VPTeamMembers size="small" :members="teamEmeritiMembers" />

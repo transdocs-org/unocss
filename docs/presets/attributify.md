@@ -1,16 +1,16 @@
 ---
-title: Attributify preset
-description: The UnoCSS preset that enables the attributify mode for other presets.
+title: 属性模式预设
+description: 这个 UnoCSS 预设为其他预设启用 attributify 模式。
 outline: deep
 ---
 
-# Attributify preset
+# 属性模式预设
 
-This enables the [attributify mode](#attributify-mode) for other presets.
+此预设为其他预设启用 [attributify 模式](#attributify模式)。
 
-[Source Code](https://github.com/unocss/unocss/tree/main/packages-presets/preset-attributify)
+[源代码](https://github.com/unocss/unocss/tree/main/packages-presets/preset-attributify)
 
-## Installation
+## 安装
 
 ::: code-group
 
@@ -37,14 +37,14 @@ import presetAttributify from '@unocss/preset-attributify'
 
 export default defineConfig({
   presets: [
-    presetAttributify({ /* preset options */ }),
+    presetAttributify({ /* 预设选项 */ }),
     // ...
   ],
 })
 ```
 
-::: tip
-This preset is included in the `unocss` package, you can also import it from there:
+::: 提示
+此预设包含在 `unocss` 包中，你也可以从那里导入它：
 
 ```ts
 import { presetAttributify } from 'unocss'
@@ -52,19 +52,19 @@ import { presetAttributify } from 'unocss'
 
 :::
 
-## Attributify Mode
+## Attributify 模式
 
-Imagine you have this button using Tailwind CSS's utilities. When the list gets longer, it becomes really hard to read and maintain.
+想象一下，你有一个使用 Tailwind CSS 工具类的按钮。当类列表变长时，它会变得难以阅读和维护。
 
 ```html
 <button
   class="bg-blue-400 hover:bg-blue-500 text-sm text-white font-mono font-light py-2 px-4 rounded border-2 border-blue-200 dark:bg-blue-500 dark:hover:bg-blue-600"
 >
-  Button
+  按钮
 </button>
 ```
 
-With attributify mode, you can separate utilities into attributes:
+使用 attributify 模式，你可以将工具类拆分为属性：
 
 ```html
 <button
@@ -74,61 +74,61 @@ With attributify mode, you can separate utilities into attributes:
   p="y-2 x-4"
   border="2 rounded blue-200"
 >
-  Button
+  按钮
 </button>
 ```
 
-For example, `text-sm text-white` could be grouped into `text="sm white"` without duplicating the same prefix.
+例如，`text-sm text-white` 可以合并为 `text="sm white"`，而无需重复相同的前缀。
 
-## Prefix self-referencing
+## 前缀自引用
 
-For utilities like `flex`, `grid`, `border`, that have the utilities same as the prefix, a special `~` value is provided.
+对于像 `flex`、`grid`、`border` 这样前缀和工具类名称相同的属性，提供了一个特殊的 `~` 值。
 
-For example:
-
-```html
-<button class="border border-red">Button</button>
-```
-
-Can be written as:
+例如：
 
 ```html
-<button border="~ red">Button</button>
+<button class="border border-red">按钮</button>
 ```
 
-## Valueless attributify
+可以写成：
 
-In addition to Windi CSS's attributify mode, this preset also supports valueless attributes.
+```html
+<button border="~ red">按钮</button>
+```
 
-For example,
+## 无值属性模式
+
+除了 Windi CSS 的 attributify 模式外，该预设还支持无值属性。
+
+例如，
 
 ```html
 <div class="m-2 rounded text-teal-400" />
 ```
 
-now can be
+现在可以写成：
 
 ```html
 <div m-2 rounded text-teal-400 />
 ```
 
 ::: info
-Note: If you are using JSX, `<div foo>` might be transformed to `<div foo={true}>` which will make the generated CSS from UnoCSS fail to match the attributes. To solve this, you might want to try [`transformer-attributify-jsx`](/transformers/attributify-jsx) along with this preset.
+注意：如果你使用 JSX，`<div foo>` 可能会被转换为 `<div foo={true}>`，这将导致 UnoCSS 生成的 CSS 无法匹配属性。为解决这个问题，你可以同时使用此预设并尝试 [`transformer-attributify-jsx`](/transformers/attributify-jsx)。
 :::
 
-## Properties conflicts
+## 属性冲突
 
-If the name of the attributes mode ever conflicts with the elements' or components' properties, you can add `un-` prefix to be specific to UnoCSS's attributify mode.
+如果属性模式的名称与元素或组件的属性发生冲突，可以在属性前添加 `un-` 前缀以明确这是 UnoCSS 的 attributify 模式。
 
-For example:
+例如：
 
 ```html
-<a text="red">This conflicts with links' `text` prop</a>
-<!-- to -->
-<a un-text="red">Text color to red</a>
+<a text="red">这与链接的 `text` 属性冲突</a>
+<!-- 变成 -->
+<a un-text="red">文字颜色为红色</a>
 ```
 
-Prefix is optional by default, if you want to enforce the usage of prefix, set
+默认情况下，前缀是可选的。如果你想强制使用前缀，请设置：
 
 ```ts
 presetAttributify({
@@ -137,7 +137,7 @@ presetAttributify({
 })
 ```
 
-You can also disable the scanning for certain attributes by:
+你也可以通过以下方式禁用对某些属性的扫描：
 
 ```ts
 presetAttributify({
@@ -148,15 +148,15 @@ presetAttributify({
 })
 ```
 
-## TypeScript support (JSX/TSX)
+## TypeScript 支持（JSX/TSX）
 
-Create `shims.d.ts` with the following content:
+创建 `shims.d.ts` 文件并添加以下内容：
 
-> By default, the type includes common attributes from `@unocss/preset-wind3`. If you need custom attributes, refer to the [type source](https://github.com/unocss/unocss/blob/main/packages-presets/preset-attributify/src/jsx.ts) to implement your own type.
+> 默认情况下，类型包括来自 `@unocss/preset-wind3` 的常见属性。如果你需要自定义属性，请参考 [类型源码](https://github.com/unocss/unocss/blob/main/packages-presets/preset-attributify/src/jsx.ts) 实现你自己的类型。
 
 ### Vue
 
-Since Volar 0.36, [it's now strict to unknown attributes](https://github.com/johnsoncodehk/volar/issues/1077#issuecomment-1145361472). To opt-out, you can add the following file to your project:
+自从 Volar 0.36 起，[它对未知属性变得严格](https://github.com/johnsoncodehk/volar/issues/1077#issuecomment-1145361472)。要禁用该限制，你可以在项目中添加以下文件：
 
 ```ts [html.d.ts]
 declare module '@vue/runtime-dom' {
@@ -238,59 +238,59 @@ declare module 'preact' {
 }
 ```
 
-### Attributify with Prefix
+### 带前缀的 Attributify
 
 ```ts
 import type { AttributifyNames } from '@unocss/preset-attributify'
 
-type Prefix = 'uno:' // change it to your prefix
+type Prefix = 'uno:' // 将其更改为你的前缀
 
 interface HTMLAttributes extends Partial<Record<AttributifyNames<Prefix>, string>> {}
 ```
 
-## Options
+## 选项
 
 ### strict
 
-- **type:** `boolean`
-- **default:** `false`
+- **类型：** `boolean`
+- **默认值：** `false`
 
-Only generate CSS for attributify or class.
+仅生成 attributify 或 class 的 CSS。
 
 ### prefix
 
-- **type:** `string`
-- **default:** `'un-'`
+- **类型：** `string`
+- **默认值：** `'un-'`
 
-The prefix for attributify mode.
+attributify 模式的前缀。
 
 ### prefixedOnly
 
-- **type:** `boolean`
-- **default:** `false`
+- **类型：** `boolean`
+- **默认值：** `false`
 
-Only match for prefixed attributes.
+仅匹配带前缀的属性。
 
 ### nonValuedAttribute
 
-- **type:** `boolean`
-- **default:** `true`
+- **类型：** `boolean`
+- **默认值：** `true`
 
-Support matching non-valued attributes.
+支持匹配无值属性。
 
 ### ignoreAttributes
 
-- **type:** `string[]`
+- **类型：** `string[]`
 
-A list of attributes to be ignored from extracting.
+要忽略提取的属性列表。
 
 ### trueToNonValued
 
-- **type:** `boolean`
-- **default:** `false`
+- **类型：** `boolean`
+- **默认值：** `false`
 
-Non-valued attributes will also match if the actual value represented in DOM is `true`. This option exists for supporting frameworks that encodes non-valued attributes as `true`. Enabling this option will break rules that ends with `true`.
+如果 DOM 中的实际值为 `true`，无值属性也会匹配。此选项用于支持将无值属性编码为 `true` 的框架。启用此选项将破坏以 `true` 结尾的规则。
 
-## Credits
+## 致谢
 
-Initial idea by [@Tahul](https://github.com/Tahul) and [@antfu](https://github.com/antfu). Prior [implementation in Windi CSS](https://windicss.org/posts/v30.html#attributify-mode) by [@voorjaar](https://github.com/voorjaar).
+初始想法来自 [@Tahul](https://github.com/Tahul) 和 [@antfu](https://github.com/antfu)。之前的 [Windi CSS 实现](https://windicss.org/posts/v30.html#attributify-mode) 由 [@voorjaar](https://github.com/voorjaar) 完成。

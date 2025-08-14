@@ -1,15 +1,15 @@
 ---
 title: Next.js
-description: Getting started with UnoCSS and Next.js.
+description: 开始使用 UnoCSS 和 Next.js。
 ---
 
 # Next.js
 
-Getting Started with UnoCSS and Next.js. Check the [example](https://github.com/unocss/unocss/tree/main/examples/next).
+开始使用 UnoCSS 和 Next.js。查看[示例](https://github.com/unocss/unocss/tree/main/examples/next)。
 
-## Setup
+## 安装
 
-### Installation
+### 安装步骤
 
 ::: code-group
 
@@ -31,9 +31,9 @@ bun add -D unocss @unocss/postcss @unocss/reset
 
 :::
 
-### Configuration
+### 配置
 
-Create `uno.config.ts` or `uno.config.js` at the root of your project.
+在项目根目录下创建 `uno.config.ts` 或 `uno.config.js`。
 
 ::: code-group
 
@@ -73,7 +73,7 @@ export default defineConfig({
 
 :::
 
-Create `postcss.config.mjs` at the root of your project.
+在项目根目录下创建 `postcss.config.mjs`。
 
 ```js [postcss.config.mjs]
 export default {
@@ -85,9 +85,9 @@ export default {
 }
 ```
 
-### Import stylesheets
+### 引入样式表
 
-Add `@unocss all;` in `globals.css`.
+在 `globals.css` 中添加 `@unocss all;`。
 
 ```css [globals.css]
 @unocss all;
@@ -95,7 +95,7 @@ Add `@unocss all;` in `globals.css`.
 /* ... */
 ```
 
-Then import `@unocss/reset/tailwind.css` in your layout file.
+然后在布局文件中引入 `@unocss/reset/tailwind.css`。
 
 ::: code-group
 
@@ -170,9 +170,9 @@ export default function RootLayout({ children }) {
 
 :::
 
-## Usage
+## 使用方法
 
-Style your components with unocss!
+使用 unocss 来样式化你的组件！
 
 ::: code-group
 
@@ -182,7 +182,7 @@ export default function Home() {
     <main className="py-20 px-12 text-center flex flex-col items-center gap-20px">
       <span className="text-blue text-5xl text-hover:red cursor-default">Nextjs</span>
       <div className="i-carbon-car inline-block text-4xl" />
-      <button className="btn w-10rem">Button</button>
+      <button className="btn w-10rem">按钮</button>
     </main>
   )
 }
@@ -194,7 +194,7 @@ export default function Home() {
     <main className="py-20 px-12 text-center flex flex-col items-center gap-20px">
       <span className="text-blue text-5xl text-hover:red cursor-default">Nextjs</span>
       <div className="i-carbon-car inline-block text-4xl" />
-      <button className="btn w-10rem">Button</button>
+      <button className="btn w-10rem">按钮</button>
     </main>
   )
 }
@@ -202,6 +202,6 @@ export default function Home() {
 
 :::
 
-## License
+## 许可证
 
 - MIT License &copy; 2021-PRESENT [Anthony Fu](https://github.com/antfu)

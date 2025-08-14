@@ -1,13 +1,13 @@
 ---
-title: UnoCSS Nuxt Module
-description: Nuxt module for UnoCSS.
+title: UnoCSS Nuxt 模块
+description: 用于 UnoCSS 的 Nuxt 模块。
 ---
 
-# Nuxt Module
+# Nuxt 模块
 
-The Nuxt module for UnoCSS.
+用于 UnoCSS 的 Nuxt 模块。
 
-## Installation
+## 安装
 
 ::: code-group
 
@@ -29,7 +29,7 @@ bun add -D unocss @unocss/nuxt
 
 :::
 
-Add `@unocss/nuxt` to your Nuxt config file:
+将 `@unocss/nuxt` 添加到你的 Nuxt 配置文件中：
 
 ```ts [nuxt.config.ts]
 export default defineNuxtConfig({
@@ -39,19 +39,19 @@ export default defineNuxtConfig({
 })
 ```
 
-Create a `uno.config.ts` file:
+创建一个 `uno.config.ts` 文件：
 
 ```ts [uno.config.ts]
 import { defineConfig } from 'unocss'
 
 export default defineConfig({
-  // ...UnoCSS options
+  // ...UnoCSS 配置选项
 })
 ```
 
-The `uno.css` entry will be automatically injected by the module.
+模块会自动注入 `uno.css` 入口文件。
 
-## Support status
+## 支持状态
 
 |               | Nuxt 2 | Nuxt Bridge | Nuxt 3 |
 | ------------- | :----- | :---------- | :----- |
@@ -60,11 +60,11 @@ The `uno.css` entry will be automatically injected by the module.
 | Vite Dev      | -      | ✅          | ✅     |
 | Vite Build    | -      | ✅          | ✅     |
 
-## Configuration
+## 配置
 
-We recommend to use the dedicated `uno.config.ts` file for configuration. See [Config File](/guide/config-file) for more details.
+我们推荐使用专门的 `uno.config.ts` 文件进行配置。详情请参阅 [配置文件](/guide/config-file)。
 
-You can enable the `nuxtLayers` option, so Nuxt will automatically merge `uno.config` files from each Nuxt layer:
+你可以启用 `nuxtLayers` 选项，这样 Nuxt 将自动合并来自每个 Nuxt 层的 `uno.config` 文件：
 
 ```ts [nuxt.config.ts]
 export default defineNuxtConfig({
@@ -75,7 +75,7 @@ export default defineNuxtConfig({
 })
 ```
 
-then you can reexport the generated config in the root config file:
+然后你可以在根配置文件中重新导出生成的配置：
 
 ```ts [uno.config.ts]
 import config from './.nuxt/uno.config.mjs'
@@ -83,17 +83,17 @@ import config from './.nuxt/uno.config.mjs'
 export default config
 ```
 
-or modify/extend it:
+或者修改/扩展它：
 
 ```ts
 import { mergeConfigs } from '@unocss/core'
 import config from './.nuxt/uno.config.mjs'
 
 export default mergeConfigs([config, {
-  // your overrides
+  // 你的覆盖配置
 }])
 ```
 
-## License
+## 许可证
 
 - MIT License &copy; 2021-PRESENT [Anthony Fu](https://github.com/antfu)

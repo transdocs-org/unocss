@@ -1,22 +1,22 @@
 ---
-title: UnoCSS Webpack Plugin
-description: The webpack plugin for UnoCSS (@unocss/webpack).
+title: UnoCSS Webpack 插件
+description: UnoCSS 的 Webpack 插件（@unocss/webpack）。
 outline: deep
 ---
 
-# Webpack Plugin
+# Webpack 插件
 
-The webpack plugin for UnoCSS: `@unocss/webpack`. Currently, this plugin only supports the [`global` mode](https://github.com/unocss/unocss/blob/main/packages-integrations/vite/src/types.ts#L11-L21).
+UnoCSS 的 Webpack 插件：`@unocss/webpack`。目前，该插件仅支持 [`global` 模式](https://github.com/unocss/unocss/blob/main/packages-integrations/vite/src/types.ts#L11-L21)。
 
 ::: info
-This plugin does not come with any default presets.
+该插件不附带任何默认预设。
 :::
 
-## Prerequisite
+## 先决条件
 
-`@unocss/webpack` requires `style-loader` and `css-loader` to handle CSS files.
+`@unocss/webpack` 需要 `style-loader` 和 `css-loader` 来处理 CSS 文件。
 
-## Installation
+## 安装
 
 ::: code-group
 
@@ -38,7 +38,7 @@ bun add -D @unocss/webpack
 
 :::
 
-From UnoCSS version `v0.59.0`, UnoCSS has been moved to ESM-only, you need to load your configuration via dynamic import:
+从 UnoCSS 版本 `v0.59.0` 开始，UnoCSS 已迁移至仅支持 ESM，您需要通过动态导入加载配置：
 
 ::: code-group
 
@@ -74,7 +74,7 @@ module.exports = function () {
 
 :::
 
-If you're using older version of UnoCSS, you can use the following code:
+如果您使用的是旧版本的 UnoCSS，可以使用以下代码：
 
 ::: code-group
 
@@ -110,33 +110,33 @@ module.exports = {
 
 :::
 
-Create a `uno.config.ts` file:
+创建一个 `uno.config.ts` 文件：
 
 ```ts [uno.config.ts]
 import { defineConfig } from 'unocss'
 
 export default defineConfig({
-  // ...UnoCSS options
+  // ...UnoCSS 配置项
 })
 ```
 
 ::: warning
-If you are using webpack@4.x, the `optimization.realContentHash` configuration is not supported, And you should use `css.extract.filename` to customize CSS filename (we use first 9 letter of hashcode instead of contenthash as example). Beware this [known issue](https://github.com/unocss/unocss/issues/1728) with bundle and [webpack#9520](https://github.com/webpack/webpack/issues/9520#issuecomment-749534245).
+如果您使用的是 webpack@4.x，不支持 `optimization.realContentHash` 配置，您应该使用 `css.extract.filename` 自定义 CSS 文件名（示例中使用了 hash 的前 9 个字符代替 contenthash）。请注意此 [已知问题](https://github.com/unocss/unocss/issues/1728) 和 [webpack#9520](https://github.com/webpack/webpack/issues/9520#issuecomment-749534245)。
 :::
 
-## Usage
+## 使用方法
 
-Add `uno.css` to your main entry:
+将 `uno.css` 添加到您的主入口文件中：
 
 ```ts [main.ts]
 import 'uno.css'
 ```
 
-## Frameworks
+## 框架支持
 
 ### Vue + Vue CLI
 
-If you're using [Vue CLI](https://cli.vuejs.org/) with webpack 4/5 with UnoCSS `v0.59.0`, you need to use the latest [Vue CLI Service](https://cli.vuejs.org/guide/cli-service.html) `v5.0.8` to load your configuration with dynamic import:
+如果您使用 [Vue CLI](https://cli.vuejs.org/) 搭配 webpack 4/5 且使用 UnoCSS `v0.59.0`，需要使用最新的 [Vue CLI Service](https://cli.vuejs.org/guide/cli-service.html) `v5.0.8` 通过动态导入加载配置：
 
 ::: code-group
 
@@ -206,7 +206,7 @@ module.exports = function () {
 
 :::
 
-If using an older version of UnoCSS, you can use the following code:
+如果使用旧版本的 UnoCSS，可以使用以下代码：
 
 ::: code-group
 

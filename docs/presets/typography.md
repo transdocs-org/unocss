@@ -1,16 +1,16 @@
 ---
-title: Typography preset
-description: Typography classes for UnoCSS (@unocss/preset-typography).
+title: 排版预设
+description: UnoCSS 的排版类（@unocss/preset-typography）。
 outline: deep
 ---
 
-# Typography preset
+# 排版预设
 
-Provides a set of prose classes you can use to add typographic defaults to vanilla HTML.
+提供一组“prose”类，用于为原始 HTML 添加排版默认样式。
 
-[Source Code](https://github.com/unocss/unocss/tree/main/packages-presets/preset-typography)
+[源代码](https://github.com/unocss/unocss/tree/main/packages-presets/preset-typography)
 
-## Installation
+## 安装
 
 ::: code-group
 
@@ -33,7 +33,7 @@ bun add -D @unocss/preset-typography
 :::
 
 ::: tip
-This preset is included in the `unocss` package, you can also import it from there:
+此预设包含在 `unocss` 包中，也可以直接从那里导入：
 
 ```ts
 import { presetTypography } from 'unocss'
@@ -41,7 +41,7 @@ import { presetTypography } from 'unocss'
 
 :::
 
-## Usage
+## 使用方法
 
 ```js [uno.config.js]
 import {
@@ -53,8 +53,8 @@ import {
 
 export default defineConfig({
   presets: [
-    presetAttributify(), // required when using attributify mode
-    presetWind3(), // required
+    presetAttributify(), // 使用 attributify 模式时必需
+    presetWind3(), // 必需
     presetTypography(),
   ],
 })
@@ -62,14 +62,14 @@ export default defineConfig({
 
 ::: code-group
 
-```html [Classes]
+```html [类]
 <article class="text-base prose prose-truegray xl:text-xl">
   {{ markdown }}
   <p class="not-prose">Some text</p>
 </article>
 ```
 
-```html [Attributes]
+```html [属性]
 <article text-base prose prose-truegray xl="text-xl">
   {{ markdown }}
   <p class="not-prose">Some text</p>
@@ -79,60 +79,47 @@ export default defineConfig({
 :::
 
 ::: warning
-Notice: `not-prose` can only be used as a class, not as an attribute.
+注意：`not-prose` 只能作为类使用，不能作为属性使用。
 :::
 
-## Highlights
+## 特点
 
-### Any font size
+### 任意字体大小
 
-Apply any font size for body you like and `prose` will scale the styles for
-the respective HTML elements. For instance, `prose text-lg` has body font size
-`1.125rem` and `h1` will scale with that size 2.25 times. See [all the
-supported HTML elements](https://github.com/unocss/unocss/blob/main/packages-presets/preset-typography/src/preflights/default.ts).
+可以为正文应用任意字体大小，`prose` 会根据该字体大小对相应 HTML 元素的样式进行缩放。例如，`prose text-lg` 的正文字体大小为 `1.125rem`，而 `h1` 将以该大小的 2.25 倍进行缩放。查看 [所有支持的 HTML 元素](https://github.com/unocss/unocss/blob/main/packages-presets/preset-typography/src/preflights/default.ts)。
 
-### Any color
+### 任意颜色
 
-Apply any color with `prose-${colorName}` by UnoCSS (e.g. `prose-coolgray`,
-`prose-sky`) since `prose` does not have any color by default. See
-[all available colors](#colors). For instance, `prose prose-truegray` will use
-the respective colors for the respective HTML elements.
+可以通过 `prose-${colorName}` 应用任意颜色（例如 `prose-coolgray`、`prose-sky`），因为 `prose` 默认没有颜色。查看 [所有可用颜色](#colors)。例如，`prose prose-truegray` 将使用相应颜色应用于相应 HTML 元素。
 
-### Dark mode with a single utility
+### 单个工具实现暗色模式
 
-Apply typographic dark mode with `prose-invert` (background color needs to be
-handled by users). For instance, `prose dark:prose-invert` will use the
-inverted colors in the dark mode.
+使用 `prose-invert` 实现排版暗色模式（背景色需用户自行处理）。例如，`prose dark:prose-invert` 在暗色模式下将使用反转颜色。
 
-### Your very own style
+### 自定义样式
 
-Styles of elements not within `prose` will stay the same. No style resetting
-just like UnoCSS.
+不在 `prose` 内的元素样式保持不变。不会像其他框架那样进行样式重置，正如 UnoCSS 的一贯做法。
 
-### Undo with `not` utility
+### 使用 `not` 工具撤销样式
 
-Apply `not-prose` to the elements to undo the typographic styles. For
-instance, `<table class="not-prose">` will skip the styles by this preset for
-the `table` element **(NOTE: `not` utility is only usable in class since it is
-only used in CSS** **selector & not scanned by UnoCSS)**.
+使用 `not-prose` 可撤销某个元素的排版样式。例如，`<table class="not-prose">` 将跳过该 `table` 元素的此预设样式 **（注意：`not` 工具只能通过类使用，因为它仅在 CSS 选择器中使用，UnoCSS 不会扫描它）**。
 
-### Compatibility options
+### 兼容性选项
 
-This preset uses some pseudo-classes which are not widely supported, but you
-can disable them. ([#2064](https://github.com/unocss/unocss/pull/2064))
+此预设使用了一些尚未广泛支持的伪类，但你可以禁用它们。([#2064](https://github.com/unocss/unocss/pull/2064))
 
-- If you enable `noColonNot` or `noColonWhere`, `not-prose` will be unavailable.
-- If you enable `noColonIs`, attributify mode will have a wrong behavior.
+- 如果启用 `noColonNot` 或 `noColonWhere`，则 `not-prose` 不可用。
+- 如果启用 `noColonIs`，attributify 模式将出现错误行为。
 
-## Utilities
+## 工具类
 
-|  Rule   |                                                    Styles by this rule                                                    |
+|  规则   |                                                    该规则对应的样式                                                    |
 | :-----: | :-----------------------------------------------------------------------------------------------------------------------: |
-| `prose` | See [on GitHub](https://github.com/unocss/unocss/blob/main/packages-presets/preset-typography/src/preflights/default.ts). |
+| `prose` | 查看 [GitHub 上的代码](https://github.com/unocss/unocss/blob/main/packages-presets/preset-typography/src/preflights/default.ts). |
 
-### Colors
+### 颜色
 
-| Rules (color)   |
+| 规则（颜色）   |
 | --------------- |
 | `prose-rose`    |
 | `prose-pink`    |
@@ -157,44 +144,43 @@ can disable them. ([#2064](https://github.com/unocss/unocss/pull/2064))
 | `prose-neutral` |
 | `prose-stone`   |
 
-## Options
+## 配置选项
 
-This preset has `selectorName` and `cssExtend` configurations for users who like
-to override or extend.
+此预设提供了 `selectorName` 和 `cssExtend` 配置，供希望覆盖或扩展样式的用户使用。
 
 :::tip
-The CSS declarations passed to `cssExtend` will
+传递给 `cssExtend` 的 CSS 声明：
 
-- **override** the built-in styles if the values are conflicting, else
-- **be merged** deeply with built-in styles.
+- 如果值冲突，**将覆盖**内置样式；
+- 否则，**将与内置样式深度合并**。
   :::
 
 ### selectorName
 
-- **Type:** `string`
-- **Default:** `prose`
+- **类型：** `string`
+- **默认值：** `prose`
 
-The class name to use the typographic utilities. To undo the styles to the elements, use it like `not-${selectorName}` which is by default `not-prose`.
+用于应用排版工具类的类名。要撤销元素的样式，请使用 `not-${selectorName}`，默认为 `not-prose`。
 
 :::tip
-`not` utility is only available in class.
+`not` 工具只能通过类使用。
 :::
 
 ### cssExtend
 
-- **Type:** `Record<string, CSSObject>`
-- **Default:** `undefined`
+- **类型：** `Record<string, CSSObject>`
+- **默认值：** `undefined`
 
-Extend or override CSS selectors with CSS declaration block.
+通过 CSS 声明块扩展或覆盖 CSS 选择器。
 
 ### compatibility
 
-- **Type:** `TypographyCompatibilityOptions`
-- **Default:** `undefined`
+- **类型：** `TypographyCompatibilityOptions`
+- **默认值：** `undefined`
 
-See [Compatibility options](#compatibility-options).
+详见 [兼容性选项](#兼容性选项)。
 :::warning
-Notice that it will affect some features.
+注意：这将影响部分功能。
 :::
 
 ```ts
@@ -205,7 +191,7 @@ interface TypographyCompatibilityOptions {
 }
 ```
 
-## Example
+## 示例
 
 ```ts [uno.config.ts]
 import { presetTypography } from '@unocss/preset-typography'
@@ -213,12 +199,11 @@ import { defineConfig, presetAttributify, presetWind3 } from 'unocss'
 
 export default defineConfig({
   presets: [
-    presetAttributify(), // required if using attributify mode
-    presetWind3(), // required
+    presetAttributify(), // 使用 attributify 模式时必需
+    presetWind3(), // 必需
     presetTypography({
-      selectorName: 'markdown', // now use like `markdown markdown-gray`, `not-markdown`
-      // cssExtend is an object with CSS selector as key and
-      // CSS declaration block as value like writing normal CSS.
+      selectorName: 'markdown', // 现在使用方式如 `markdown markdown-gray`, `not-markdown`
+      // cssExtend 是一个对象，键为 CSS 选择器，值为 CSS 声明块，类似编写普通 CSS。
       cssExtend: {
         'code': {
           color: '#8b5cf6',
@@ -235,7 +220,7 @@ export default defineConfig({
 })
 ```
 
-## Acknowledgement
+## 致谢
 
 - [Tailwind CSS Typography](https://github.com/tailwindlabs/tailwindcss-typography)
 - [Windi CSS Typography](https://github.com/windicss/windicss/tree/main/src/plugin/typography)

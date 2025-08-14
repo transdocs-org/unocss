@@ -1,42 +1,42 @@
 ---
-title: Shortcuts
-description: The shortcuts functionality that UnoCSS provides is similar to Windi CSS's one.
+title: 快捷类
+description: UnoCSS 提供的快捷类功能与 Windi CSS 的功能相似。
 ---
 
-# Shortcuts
+# 快捷类
 
-Shortcuts let you combine multiple rules into a single shorthand, inspired by [Windi CSS's](https://windicss.org/features/shortcuts.html).
+受 [Windi CSS](https://windicss.org/features/shortcuts.html) 的启发，快捷类允许你将多个规则组合成一个简写的类名。
 
-## Usage
+## 使用方法
 
 <!--eslint-skip-->
 
 ```ts
 shortcuts: {
-  // shortcuts to multiple utilities
+  // 多个工具类的快捷方式
   'btn': 'py-2 px-4 font-semibold rounded-lg shadow-md',
   'btn-green': 'text-white bg-green-500 hover:bg-green-700',
-  // single utility alias
+  // 单个工具类的别名
   'red': 'text-red-100',
 }
 ```
 
-In addition to the plain mapping, UnoCSS also allows you to define dynamic shortcuts.
+除了简单的映射之外，UnoCSS 还允许你定义动态快捷类。
 
-Similar to [Rules](/config/rules), a dynamic shortcut is the combination of a matcher `RegExp` and a handler function.
+类似于 [规则](/config/rules)，动态快捷类由一个匹配器 `RegExp` 和一个处理函数组成。
 
 ```ts
 shortcuts: [
-  // you could still have object style
+  // 你仍然可以使用对象形式
   {
     btn: 'py-2 px-4 font-semibold rounded-lg shadow-md',
   },
-  // dynamic shortcuts
+  // 动态快捷类
   [/^btn-(.*)$/, ([, c]) => `bg-${c}-400 text-${c}-100 py-2 px-4 rounded-lg`],
 ]
 ```
 
-With this, we could use `btn-green` and `btn-red` to generate the following CSS:
+有了这个定义，我们可以使用 `btn-green` 和 `btn-red` 来生成以下 CSS：
 
 ```css
 .btn-green {

@@ -1,16 +1,16 @@
 ---
-title: rem to px preset
-description: Converts rem to px for utils (@unocss/preset-rem-to-px).
+title: rem 转 px 预设
+description: 将 rem 转换为 px 的工具 (@unocss/preset-rem-to-px)。
 outline: deep
 ---
 
-# Rem to px preset
+# rem 转 px 预设
 
-Converts rem to px for all utilities.
+为所有工具类将 rem 转换为 px。
 
-[Source Code](https://github.com/unocss/unocss/tree/main/packages-presets/preset-rem-to-px)
+[源代码](https://github.com/unocss/unocss/tree/main/packages-presets/preset-rem-to-px)
 
-## Installation
+## 安装
 
 ::: code-group
 
@@ -39,12 +39,12 @@ import { defineConfig } from 'unocss'
 export default defineConfig({
   presets: [
     presetRemToPx(),
-    // ...other presets
+    // ...其他预设
   ],
 })
 ```
 
-## Usage
+## 使用方法
 
 ```html
 <div class="m-2"></div>
@@ -52,13 +52,13 @@ export default defineConfig({
 
 ::: code-group
 
-```css [Without]
+```css [未启用]
 .m-2 {
   margin: 0.5rem;
 }
 ```
 
-```css [With]
+```css [启用后]
 .m-2 {
   margin: 8px;
 }
@@ -66,11 +66,11 @@ export default defineConfig({
 
 :::
 
-## Options
+## 选项
 
 ### baseFontSize
 
-- **Type:** `number`
-- **Default:** `16`
+- **类型:** `number`
+- **默认值:** `16`
 
-The base font size to convert rem to px (`1rem = n px`).
+用于将 rem 转换为 px 的基础字体大小（`1rem = n px`）。

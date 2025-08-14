@@ -1,47 +1,47 @@
-# Official Packages
+# 官方包
 
-## Presets
+## 预设
 
-| Package                                            | Description                                  |
-| -------------------------------------------------- | -------------------------------------------- |
-| [@unocss/preset-mini](/presets/mini)               | The minimal but essential rules and variants |
-| [@unocss/preset-wind3](/presets/wind3)             | Tailwind CSS / Windi CSS compact preset      |
-| [@unocss/preset-wind4](/presets/wind4)             | Tailwind4 CSS compact preset                 |
-| [@unocss/preset-attributify](/presets/attributify) | Enables Attributify Mode for other rules     |
-| [@unocss/preset-tagify](/presets/tagify)           | Enables Tagify Mode for other rules          |
-| [@unocss/preset-icons](/presets/icons)             | Pure CSS Icons solution powered by Iconify   |
-| [@unocss/preset-web-fonts](/presets/web-fonts)     | Web fonts (Google Fonts, etc.) support       |
-| [@unocss/preset-typography](/presets/typography)   | The typography preset                        |
-| [@unocss/preset-rem-to-px](/presets/rem-to-px)     | Converts rem to px for utils                 |
+| 包名                                             | 描述                                         |
+| ------------------------------------------------ | -------------------------------------------- |
+| [@unocss/preset-mini](/presets/mini)             | 最小化但必要的规则和变体                     |
+| [@unocss/preset-wind3](/presets/wind3)           | Tailwind CSS / Windi CSS 精简预设            |
+| [@unocss/preset-wind4](/presets/wind4)           | Tailwind4 CSS 精简预设                       |
+| [@unocss/preset-attributify](/presets/attributify) | 为其他规则启用属性模式                         |
+| [@unocss/preset-tagify](/presets/tagify)         | 为其他规则启用标签模式                         |
+| [@unocss/preset-icons](/presets/icons)           | 基于 Iconify 的纯 CSS 图标解决方案             |
+| [@unocss/preset-web-fonts](/presets/web-fonts)   | 支持网页字体（如 Google Fonts 等）             |
+| [@unocss/preset-typography](/presets/typography) | 排版预设                                       |
+| [@unocss/preset-rem-to-px](/presets/rem-to-px)   | 将 rem 转换为 px 的工具                        |
 
-### Deprecated
+### 已弃用
 
-| Package                   | Description                                 | Reason                                                            |
-| ------------------------- | ------------------------------------------- | ----------------------------------------------------------------- |
-| ~~`@unocss/preset-wind`~~ | ~~Tailwind CSS / Windi CSS compact preset~~ | This package is deprecated and renamed to `@unocss/preset-wind3`. |
-| ~~`@unocss/preset-uno`~~  | ~~The default preset~~                      | This package is deprecated and renamed to `@unocss/preset-wind3`. |
+| 包名                    | 描述                                         | 原因                                                            |
+| ----------------------- | -------------------------------------------- | --------------------------------------------------------------- |
+| ~~`@unocss/preset-wind`~~ | ~~Tailwind CSS / Windi CSS 精简预设~~         | 此包已被弃用，并重命名为 `@unocss/preset-wind3`。               |
+| ~~`@unocss/preset-uno`~~  | ~~默认预设~~                                 | 此包已被弃用，并重命名为 `@unocss/preset-wind3`。               |
 
-## Transformers
+## 转换器
 
-| Package                                                              | Description                                       |
-| -------------------------------------------------------------------- | ------------------------------------------------- |
-| [@unocss/transformer-variant-group](/transformers/variant-group)     | Transformer for Windi CSS's variant group feature |
-| [@unocss/transformer-directives](/transformers/directives)           | Transformer for CSS directives like `@apply`      |
-| [@unocss/transformer-compile-class](/transformers/compile-class)     | Compile group of classes into one class           |
-| [@unocss/transformer-attributify-jsx](/transformers/attributify-jsx) | Support valueless attributify in JSX/TSX          |
+| 包名                                                                 | 描述                                        |
+| -------------------------------------------------------------------- | ------------------------------------------- |
+| [@unocss/transformer-variant-group](/transformers/variant-group)     | 支持 Windi CSS 变体组功能的转换器           |
+| [@unocss/transformer-directives](/transformers/directives)           | 支持类似 `@apply` 的 CSS 指令转换器         |
+| [@unocss/transformer-compile-class](/transformers/compile-class)     | 将一组类编译为一个类                        |
+| [@unocss/transformer-attributify-jsx](/transformers/attributify-jsx) | 支持在 JSX/TSX 中使用无值属性模式           |
 
-## Extractors
+## 提取器
 
-| Package                                                                | Description                                           |
-| ---------------------------------------------------------------------- | ----------------------------------------------------- |
-| [@unocss/extractor-pug](/extractors/pug)                               | Extractor for Pug                                     |
-| [@unocss/extractor-svelte](/extractors/svelte)                         | Extractor for Svelte                                  |
-| [@unocss/extractor-arbitrary-variants](/extractors/arbitrary-variants) | Extractor to support arbitrary variants for utilities |
+| 包名                                                                   | 描述                                         |
+| ---------------------------------------------------------------------- | -------------------------------------------- |
+| [@unocss/extractor-pug](/extractors/pug)                               | Pug 提取器                                   |
+| [@unocss/extractor-svelte](/extractors/svelte)                         | Svelte 提取器                                |
+| [@unocss/extractor-arbitrary-variants](/extractors/arbitrary-variants) | 支持工具类中任意变体的提取器                 |
 
-# Community
+# 社区
 
 <p align="center">
   <img src="https://avatars.githubusercontent.com/unocss-community" width='150' />
 </p>
 
-We warmly welcome everyone to join and help build the [UnoCSS community](https://github.com/unocss-community). You can use and share UnoCSS-related resources in [Awesome UnoCSS](https://github.com/unocss-community/awesome-unocss).
+我们热烈欢迎所有人加入并帮助建设 [UnoCSS 社区](https://github.com/unocss-community)。你可以在 [Awesome UnoCSS](https://github.com/unocss-community/awesome-unocss) 中使用和分享 UnoCSS 相关资源。

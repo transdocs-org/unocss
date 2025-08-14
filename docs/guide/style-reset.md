@@ -1,16 +1,16 @@
 ---
-title: Style Reset
-description: UnoCSS does not provide style resetting or preflight by default for maximum flexibility and does not populate your global CSS.
+title: 样式重置
+description: UnoCSS 默认不提供样式重置或预设样式，以实现最大的灵活性，并避免污染你的全局 CSS。
 outline: deep
 ---
 
-# Browser Style Reset
+# 浏览器样式重置
 
-UnoCSS does not provide style resetting or preflight by default so not to populate your global CSS and also for maximum flexibility. If you use UnoCSS along with other CSS frameworks, they probably already do the resetting for you. If you use UnoCSS alone, you can use resetting libraries like [Normalize.css](https://github.com/csstools/normalize.css).
+UnoCSS 默认不提供样式重置或预设样式，以避免污染你的全局 CSS 并实现最大的灵活性。如果你将 UnoCSS 与其他 CSS 框架一起使用，它们可能已经为你完成了样式重置。如果你单独使用 UnoCSS，可以使用类似 [Normalize.css](https://github.com/csstools/normalize.css) 的重置库。
 
-We also provide a small collection for you to grab them quickly:
+我们也提供了一些小型的样式重置包供你快速使用：
 
-## Installation
+## 安装
 
 ::: code-group
 
@@ -32,13 +32,13 @@ bun add @unocss/reset
 
 :::
 
-## Usage
+## 使用方法
 
-You can add one of the following reset stylesheets to your `main.js`.
+你可以将以下任意一个重置样式表添加到你的 `main.js` 文件中。
 
 ### Normalize.css
 
-Source: https://github.com/csstools/normalize.css
+源码：https://github.com/csstools/normalize.css
 
 ```ts
 import '@unocss/reset/normalize.css'
@@ -46,7 +46,7 @@ import '@unocss/reset/normalize.css'
 
 ### sanitize.css
 
-Source: https://github.com/csstools/sanitize.css
+源码：https://github.com/csstools/sanitize.css
 
 ```ts
 import '@unocss/reset/sanitize/sanitize.css'
@@ -55,7 +55,7 @@ import '@unocss/reset/sanitize/assets.css'
 
 ### Eric Meyer
 
-Source: https://meyerweb.com/eric/tools/css/reset/index.html
+源码：https://meyerweb.com/eric/tools/css/reset/index.html
 
 ```ts
 import '@unocss/reset/eric-meyer.css'
@@ -67,17 +67,17 @@ import '@unocss/reset/eric-meyer.css'
 import '@unocss/reset/tailwind.css'
 ```
 
-### Tailwind compat
+### Tailwind 兼容版
 
 ```ts
 import '@unocss/reset/tailwind-compat.css'
 ```
 
-This reset is based on [Tailwind reset](#tailwind), minus the background color override for buttons to avoid conflicts with UI frameworks. See [linked issue](https://github.com/unocss/unocss/issues/2127).
+该重置基于 [Tailwind 的重置样式](#tailwind)，但移除了按钮的背景颜色覆盖，以避免与 UI 框架产生冲突。请参见 [相关 issue](https://github.com/unocss/unocss/issues/2127)。
 
 ::: code-group
 
-```css [Before]
+```css [重置前]
 button,
 [type='button'],
 [type='reset'],
@@ -88,7 +88,7 @@ button,
 }
 ```
 
-```css [After]
+```css [重置后]
 button,
 [type='button'],
 [type='reset'],

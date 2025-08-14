@@ -1,14 +1,14 @@
 ---
-title: Directives transformer
-description: UnoCSS transformer for @apply, @screen and theme() directives (@unocss/transformer-directives)
+title: 指令转换器
+description: UnoCSS 对 `@apply`、`@screen` 和 `theme()` 指令的转换器（`@unocss/transformer-directives`）
 outline: deep
 ---
 
-# Directives transformer
+# 指令转换器
 
-UnoCSS transformer for `@apply`, `@screen` and `theme()` directives: `@unocss/transformer-directives`.
+UnoCSS 对 `@apply`、`@screen` 和 `theme()` 指令的转换器：`@unocss/transformer-directives`。
 
-## Installation
+## 安装
 
 ::: code-group
 
@@ -43,7 +43,7 @@ export default defineConfig({
 ```
 
 ::: tip
-This preset is included in the `unocss` package, you can also import it from there:
+此预设包含在 `unocss` 包中，你也可以从那里导入它：
 
 ```ts
 import { transformerDirectives } from 'unocss'
@@ -51,7 +51,7 @@ import { transformerDirectives } from 'unocss'
 
 :::
 
-## Usage
+## 使用方法
 
 ### `@apply`
 
@@ -61,7 +61,7 @@ import { transformerDirectives } from 'unocss'
 }
 ```
 
-Will be transformed to:
+将被转换为：
 
 ```css
 .custom-div {
@@ -74,7 +74,7 @@ Will be transformed to:
 
 #### `--at-apply`
 
-To be compatible with vanilla CSS, you can use CSS custom properties to replace the `@apply` directive:
+为了与原生 CSS 兼容，你可以使用 CSS 自定义属性来替代 `@apply` 指令：
 
 ```css
 .custom-div {
@@ -82,34 +82,34 @@ To be compatible with vanilla CSS, you can use CSS custom properties to replace 
 }
 ```
 
-This feature is enabled by default with a few aliases, that you can configure or disable via:
+该功能默认启用，并带有一些别名，你也可以通过以下方式配置或禁用：
 
 ```js
 transformerDirectives({
-  // the defaults
+  // 默认值
   applyVariable: ['--at-apply', '--uno-apply', '--uno'],
-  // or disable with:
+  // 或者通过以下方式禁用：
   // applyVariable: false
 })
 ```
 
-#### Adding quotes
+#### 添加引号
 
-To use rules with `:`, you will have to quote the whole value:
+要使用包含 `:` 的规则，你需要对整个值加引号：
 
 ```css
 .custom-div {
   --at-apply: 'hover:text-red hover:font-bold';
-  /* or */
+  /* 或者 */
   @apply 'hover:text-red hover:font-bold';
 }
 ```
 
-Using quotes after `@apply` is optional, to meet the behavior of some formatters.
+在 `@apply` 后面使用引号是可选的，以满足某些格式化工具的行为。
 
 ### `@screen`
 
-The `@screen` directive that allows you to create media queries that reference your breakpoints by name comes from [`theme.breakpoints`](/config/theme).
+`@screen` 指令允许你通过名称引用断点来创建媒体查询，它来源于 [`theme.breakpoints`](/config/theme)。
 
 ```css
 .grid {
@@ -129,7 +129,7 @@ The `@screen` directive that allows you to create media queries that reference y
 ...;
 ```
 
-Will be transformed to:
+将被转换为：
 
 ```css
 .grid {
@@ -149,9 +149,9 @@ Will be transformed to:
 /* ... */
 ```
 
-#### Breakpoint variant support
+#### 断点变体支持
 
-`@screen` also supports `lt`、`at` variants:
+`@screen` 同样支持 `lt`、`at` 变体：
 
 #### `@screen lt-`
 
@@ -172,7 +172,7 @@ Will be transformed to:
 /* ... */
 ```
 
-Will be transformed to:
+将被转换为：
 
 ```css
 .grid {
@@ -216,7 +216,7 @@ Will be transformed to:
 /* ... */
 ```
 
-Will be transformed to:
+将被转换为：
 
 ```css
 .grid {
@@ -243,7 +243,7 @@ Will be transformed to:
 
 ### `theme()`
 
-Use the `theme()` function to access your theme config values using dot notation.
+使用 `theme()` 函数通过点符号访问你的主题配置值。
 
 ```css
 .btn-blue {
@@ -251,7 +251,7 @@ Use the `theme()` function to access your theme config values using dot notation
 }
 ```
 
-Will be compiled to:
+将被编译为：
 
 ```css
 .btn-blue {
@@ -261,10 +261,10 @@ Will be compiled to:
 
 ### `icon()`
 
-Use the `icon()` function to convert the icon utility to a specific svg icon.
+使用 `icon()` 函数将图标工具类转换为特定的 SVG 图标。
 
 ::: warning
-`icon()` depends on `@unocss/preset-icons` and will use the configuration, make sure you have added this preset.
+`icon()` 依赖于 `@unocss/preset-icons` 并将使用其配置，请确保你已添加了这个预设。
 :::
 
 ```css
@@ -273,7 +273,7 @@ Use the `icon()` function to convert the icon utility to a specific svg icon.
 }
 ```
 
-Will be compiled to:
+将被编译为：
 
 ```css
 .icon {
@@ -281,16 +281,16 @@ Will be compiled to:
 }
 ```
 
-Cause the icon uses `currentColor` as the fill color by default, if you want to customize the color of the icon, you can use `icon('icon name', 'custom color')`.
+由于图标默认使用 `currentColor` 作为填充颜色，如果你想自定义图标的颜色，可以使用 `icon('icon name', 'custom color')`。
 
 ```css
 .icon {
   background-image: icon('i-carbon-moon', '#fff');
-  background-image: icon('i-carbon-moon', 'theme("colors.red.500")'); /* use theme color */
+  background-image: icon('i-carbon-moon', 'theme("colors.red.500")'); /* 使用主题颜色 */
 }
 ```
 
-Will be compiled to:
+将被编译为：
 
 ```css
 .icon {
@@ -299,6 +299,6 @@ Will be compiled to:
 }
 ```
 
-## License
+## 许可证
 
 - MIT License &copy; 2022-PRESENT [hannoeru](https://github.com/hannoeru)

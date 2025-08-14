@@ -1,13 +1,13 @@
 ---
-title: UnoCSS ESLint Config
-description: ESLint config for UnoCSS (@unocss/eslint-config).
+title: UnoCSS ESLint 配置
+description: UnoCSS 的 ESLint 配置（@unocss/eslint-config）。
 ---
 
-# ESLint Config
+# ESLint 配置
 
-ESLint config for UnoCSS: `@unocss/eslint-config`.
+UnoCSS 的 ESLint 配置：`@unocss/eslint-config`。
 
-## Installation
+## 安装
 
 ::: code-group
 
@@ -29,18 +29,18 @@ bun add -D @unocss/eslint-config
 
 :::
 
-In [Flat Config Style](https://eslint.org/docs/latest/use/configure/configuration-files-new):
+在 [Flat Config 风格](https://eslint.org/docs/latest/use/configure/configuration-files-new) 中：
 
 ```js [eslint.config.js]
 import unocss from '@unocss/eslint-config/flat'
 
 export default [
   unocss,
-  // other configs
+  // 其他配置
 ]
 ```
 
-In legacy `.eslintrc` style:
+在传统的 `.eslintrc` 风格中：
 
 ```json [.eslintrc]
 {
@@ -50,23 +50,23 @@ In legacy `.eslintrc` style:
 }
 ```
 
-## Rules
+## 规则
 
-- `@unocss/order` - Enforce a specific order for class selectors.
-- `@unocss/order-attributify` - Enforce a specific order for attributify selectors.
-- `@unocss/blocklist` - Disallow specific class selectors [Optional].
-- `@unocss/enforce-class-compile` - Enforce class compile [Optional].
+- `@unocss/order` - 强制 class 选择器的特定顺序。
+- `@unocss/order-attributify` - 强制 attributify 选择器的特定顺序。
+- `@unocss/blocklist` - 禁止特定的 class 选择器 [可选]。
+- `@unocss/enforce-class-compile` - 强制 class 编译 [可选]。
 
-### Rule options
+### 规则选项
 
 #### `@unocss/order`
 
-- `unoFunctions` (string[]) - mark function calls of matched names to enforce this rule. These are plain names, not patterns, case insensitive. Default: `['clsx', 'classnames']`.
-- `unoVariables` (string[]) - mark variable declarations of matched names to enforce this rule. These are regex patterns with flags `i`. Default: `['^cls', 'classNames?$']`. for example will match variable names `clsButton` and `buttonClassNames`.
+- `unoFunctions` (string[]) - 标记匹配名称的函数调用以应用此规则。这些是纯名称，不是模式，不区分大小写。默认值：`['clsx', 'classnames']`。
+- `unoVariables` (string[]) - 标记匹配名称的变量声明以应用此规则。这些是带有标志 `i` 的正则表达式。默认值：`['^cls', 'classNames?$']`，例如会匹配变量名 `clsButton` 和 `buttonClassNames`。
 
-### Optional rules
+### 可选规则
 
-These rules are not enabled by default. To enable it, add the following to your `.eslintrc`:
+这些规则默认未启用。要启用它们，请在 `.eslintrc` 中添加以下内容：
 
 ```json [.eslintrc]
 {
@@ -74,42 +74,42 @@ These rules are not enabled by default. To enable it, add the following to your 
     "@unocss"
   ],
   "rules": {
-    "@unocss/<rule-name>": "warn", // or "error",
-    "@unocss/<another-rule-name>": ["warn" /* or "error" */, { /* options */ }]
+    "@unocss/<rule-name>": "warn", // 或 "error"
+    "@unocss/<another-rule-name>": ["warn" /* 或 "error" */, { /* 选项 */ }]
   }
 }
 ```
 
 #### `@unocss/blocklist`
 
-Throw warning or error when using utilities listed in `blocklist` get matched.
+当使用在 `blocklist` 中列出的工具类时发出警告或错误。
 
-You can customize messages for blocked rules to make them more informative and context-specific by using the `message` property of the meta object:
+你可以通过使用 `message` 属性自定义被阻止规则的消息，使其更具信息性和上下文相关性：
 
 ```ts [unocss.config.ts]
 export default defineConfig({
   blocklist: [
-    ['bg-red-500', { message: 'Use bg-red-600 instead' }],
-    [/-auto$/, { message: s => `Use ${s.replace(/-auto$/, '-a')} instead` }], // -> "my-auto" is in blocklist: Use "my-a" instead
+    ['bg-red-500', { message: '请改用 bg-red-600' }],
+    [/-auto$/, { message: s => `请改用 ${s.replace(/-auto$/, '-a')}` }], // -> "my-auto" 在 blocklist 中：请改用 "my-a"
   ],
 })
 ```
 
 #### `@unocss/enforce-class-compile` :wrench:
 
-_This rule is designed to work in combination with [compile class transformer](https://unocss.dev/transformers/compile-class)._
+_此规则设计为与 [compile class 转换器](https://unocss.dev/transformers/compile-class) 一起使用。_
 
-Throw warning or error when class attribute or directive doesn't start with `:uno:`.
+当 class 属性或指令不以 `:uno:` 开头时发出警告或错误。
 
-:wrench: automatically adds prefix `:uno:` to all class attributes and directives.
+:wrench: 自动为所有 class 属性和指令添加前缀 `:uno:`。
 
-Options:
+选项：
 
-- `prefix` (string) - can be used in combination with [custom prefix](https://github.com/unocss/unocss/blob/main/packages-presets/transformer-compile-class/src/index.ts#L34). Default: `:uno:`
-- `enableFix` (boolean) - can be used for gradual migration when `false`. Default: `true`
+- `prefix` (string) - 可与 [自定义前缀](https://github.com/unocss/unocss/blob/main/packages-presets/transformer-compile-class/src/index.ts#L34) 一起使用。默认值：`:uno:`
+- `enableFix` (boolean) - 当为 `false` 时可用于逐步迁移。默认值：`true`
 
-**Note**: currently only Vue supported. _Contribute a PR_ if you want this in JSX. If you're looking for this in Svelte, you might be looking for [`svelte-scoped`](https://unocss.dev/integrations/svelte-scoped) mode.
+**注意**：目前仅支持 Vue。如果你想在 JSX 中使用，请贡献 PR。如果你在寻找 Svelte 中的实现，你可能需要查看 [`svelte-scoped`](https://unocss.dev/integrations/svelte-scoped) 模式。
 
-## Prior Arts
+## 参考项目
 
-Thanks to [eslint-plugin-unocss](https://github.com/devunt/eslint-plugin-unocss) by [@devunt](https://github.com/devunt).
+感谢 [@devunt](https://github.com/devunt) 提供的 [eslint-plugin-unocss](https://github.com/devunt/eslint-plugin-unocss)。

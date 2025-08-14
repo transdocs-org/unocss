@@ -1,13 +1,13 @@
 ---
-title: MDC Extractor
-description: MDC extractor for UnoCSS (@unocss/extractor-mdc)
+title: MDC 提取器
+description: 用于 UnoCSS 的 MDC 提取器 (@unocss/extractor-mdc)
 ---
 
-# MDC Extractor
+# MDC 提取器
 
-Support extracting classes from [MDC (Markdown Components)](https://content.nuxtjs.org/guide/writing/mdc) syntax.
+支持从 [MDC（Markdown 组件）](https://content.nuxtjs.org/guide/writing/mdc) 语法中提取类。
 
-## Installation
+## 安装
 
 ::: code-group
 
@@ -40,7 +40,7 @@ export default defineConfig({
 })
 ```
 
-It will apply the extraction on `.md` `.mdc` and `.markdown` files, to extract inline props usage of classes. For example
+它将在 `.md`、`.mdc` 和 `.markdown` 文件中启用类的提取，用于提取内联属性中使用的类。例如：
 
 ```md
 # Title{.text-2xl.font-bold}
@@ -50,4 +50,4 @@ Hello [World]{.text-blue-500}
 ![image](/image.png){.w-32.h-32}
 ```
 
-The `text-2xl`, `font-bold`, `text-blue-500`, `w-32`, `h-32` classes will be extracted.
+其中的 `text-2xl`、`font-bold`、`text-blue-500`、`w-32`、`h-32` 类将被提取出来。

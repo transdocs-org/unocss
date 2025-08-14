@@ -1,20 +1,20 @@
 ---
-title: Wind4 preset
-description: The Tailwind4 CSS compact preset for UnoCSS (@unocss/preset-wind4).
+title: Wind4 预设
+description: 用于 UnoCSS 的 Tailwind4 CSS 紧凑预设（@unocss/preset-wind4）。
 outline: deep
 ---
 
-# Wind4 preset
+# Wind4 预设
 
-The Tailwind4 CSS compact preset for UnoCSS. It's compatible with all features of PresetWind3 and enhances it further.
+这是 UnoCSS 的 Tailwind4 CSS 紧凑预设。它兼容 PresetWind3 的所有功能，并在此基础上进行了增强。
 
-[Source Code](https://github.com/unocss/unocss/tree/main/packages-presets/preset-wind4)
+[源码](https://github.com/unocss/unocss/tree/main/packages-presets/preset-wind4)
 
 ::: tip
-You can spend a little time reading this document to understand the changes
+建议花一点时间阅读本文档以了解相关变化
 :::
 
-## Installation
+## 安装
 
 ::: code-group
 
@@ -48,44 +48,44 @@ export default defineConfig({
 })
 ```
 
-## Compatibility
+## 兼容性
 
-Refer to [Tailwind Compatibility](https://tailwindcss.com/docs/compatibility) to learn about browser support and compatibility.
+如需了解浏览器支持和兼容性，请参考 [Tailwind 兼容性文档](https://tailwindcss.com/docs/compatibility)。
 
-## Theme
+## 主题
 
-`PresetWind4`'s theme is almost identical to `PresetWind3`'s theme, but some theme keys have been adjusted.
+`PresetWind4` 的主题与 `PresetWind3` 几乎一致，但部分主题键名进行了调整。
 
 ::: warning
-Please note when switching to PresetWind4, refer to the table below to check your theme key configuration and make appropriate adjustments.
+切换到 PresetWind4 时，请参考下表检查您的主题键配置并做出相应调整。
 :::
 
 |                                            PresetWind3                                            |                          PresetWind4                          |
 | :-----------------------------------------------------------------------------------------------: | :-----------------------------------------------------------: |
 |                                           `fontFamily`                                            |                            `font`                             |
-|                                            `fontSize`                                             |            Moved to `fontSize` property in `text`             |
-|                                           `lineHeight`                                            |   Moved to `lineHeight` property in `text` or use `leading`   |
-|                                          `letterSpacing`                                          | Moved to `letterSpacing` property in `text` or use `tracking` |
+|                                            `fontSize`                                             |            移至 `text` 中的 `fontSize` 属性             |
+|                                           `lineHeight`                                            |   移至 `text` 中的 `lineHeight` 属性 或使用 `leading`   |
+|                                          `letterSpacing`                                          | 移至 `text` 中的 `letterSpacing` 属性 或使用 `tracking` |
 |                                          `borderRadius`                                           |                           `radius`                            |
 |                                             `easing`                                              |                            `ease`                             |
 |                                           `breakpoints`                                           |                         `breakpoint`                          |
 |                                       `verticalBreakpoints`                                       |                     `verticalBreakpoint`                      |
 |                                            `boxShadow`                                            |                           `shadow`                            |
 |                                                 -                                                 |                         `insetShadow`                         |
-|     Size properties like `width`, `height`, `maxWidth`, `maxHeight`, `minWidth`, `minHeight`      |                   Unified to use `spacing`                    |
+|     尺寸属性如 `width`、`height`、`maxWidth`、`maxHeight`、`minWidth`、`minHeight`      |                   统一使用 `spacing`                    |
 |                                       `transitionProperty`                                        |                          `property`                           |
-| `gridAutoColumn`, `gridAutoRow`, `gridColumn`, `gridRow`, `gridTemplateColumn`, `gridTemplateRow` |                               -                               |
+| `gridAutoColumn`、`gridAutoRow`、`gridColumn`、`gridRow`、`gridTemplateColumn`、`gridTemplateRow` |                               -                               |
 |                                       `container.maxWidth`                                        |                     `containers.maxWidth`                     |
 |                                                 -                                                 |                          `defaults`                           |
 
 ### `Theme.defaults`
 
-`Theme.defaults` is a global default theme configuration that will be applied to `reset` styles or used as default values for certain rules.
+`Theme.defaults` 是一个全局默认主题配置，它将应用于 `reset` 样式或作为某些规则的默认值。
 
-Below are the default values for `Theme.defaults`, which you can override in your theme configuration.
+以下是 `Theme.defaults` 的默认值，您可以在自己的主题配置中覆盖它们。
 
 <details>
-<summary>Click to view default values</summary>
+<summary>点击查看默认值</summary>
 
 ```ts twoslash [uno.config.ts]
 import type { Theme } from '@unocss/preset-wind4/theme'
@@ -110,24 +110,24 @@ export const defaults: Theme['default'] = {
 
 </details>
 
-## Options
+## 选项
 
-PresetWind4's basic configuration is similar to [PresetWind3](/presets/wind3#options), with the following important changes.
+PresetWind4 的基本配置与 [PresetWind3](/presets/wind3#options) 类似，但有以下重要更改。
 
-### Preflights
+### 预加载样式（Preflights）
 
-We have added the `preflights` configuration option in `PresetWind4` to control whether to enable preset styles.
+我们在 `PresetWind4` 中新增了 `preflights` 配置选项，用于控制是否启用预设样式。
 
-#### Reset
+#### 重置样式（Reset）
 
-In PresetWind4, we align the reset styles with tailwind4 and integrate them internally. You don't need to install any additional CSS reset package like `@unocss/reset` or `normalize.css`.
+在 PresetWind4 中，我们与 Tailwind4 对齐了重置样式并将其集成在内部。您无需再安装额外的 CSS 重置包，如 `@unocss/reset` 或 `normalize.css`。
 
 ```ts [main.ts]
 import '@unocss/reset/tailwind.css' // [!code --]
 import '@unocss/reset/tailwind-compat.css' // [!code --]
 ```
 
-You only need to control whether to enable reset styles through a switch:
+只需通过开关控制是否启用重置样式：
 
 ```ts twoslash [uno.config.ts]
 import presetWind4 from '@unocss/preset-wind4'
@@ -144,17 +144,17 @@ export default defineConfig({
 })
 ```
 
-#### Theme
+#### 主题
 
-Choose how to generate theme CSS variables.
+选择如何生成主题的 CSS 变量。
 
-##### Mode
+##### 模式
 
-The UnoCSS engine with `presetWind4` installed will automatically collect dependencies on the theme when parsing utilities and generate CSS variables at the end.
+安装了 `presetWind4` 的 UnoCSS 引擎会在解析工具类时自动收集主题依赖，并在最后生成 CSS 变量。
 
-- `true`: Generate theme keys fully.
-- `false`: Disable theme keys. (Not recommended ⚠️)
-- `'on-demand'`: Generate theme keys only when used. -> ✅ **(By default)**
+- `true`: 完全生成主题键。
+- `false`: 禁用主题键。（不推荐 ⚠️）
+- `'on-demand'`: 仅在使用时生成主题键。-> ✅ **（默认）**
 
 ```ts twoslash [uno.config.ts]
 import { defineConfig, presetWind4 } from 'unocss'
@@ -170,9 +170,9 @@ export default defineConfig({
 })
 ```
 
-##### Process
+##### 处理器
 
-And you can further control the output of your theme variables. For example, if you want to convert `rem` to `px` for theme variables, we provide the `createRemToPxProcessor` function to process your theme variables.
+您可以进一步控制主题变量的输出。例如，如果您希望将主题变量中的 `rem` 转换为 `px`，我们提供了 `createRemToPxProcessor` 函数来处理您的主题变量。
 
 ```ts twoslash [uno.config.ts]
 import { createRemToPxProcessor } from '@unocss/preset-wind4/utils' // [!code ++]
@@ -183,7 +183,7 @@ export default defineConfig({
     presetWind4({
       preflights: { // [!code ++]
         theme: { // [!code ++]
-          mode: 'on-demand', // Default by 'on-demand' // [!code ++]
+          mode: 'on-demand', // 默认为 'on-demand' // [!code ++]
           process: createRemToPxProcessor(), // [!code ++]
         } // [!code ++]
       }, // [!code ++]
@@ -192,7 +192,7 @@ export default defineConfig({
 })
 ```
 
-By the way, if you want to use the `presetRemToPx` preset to convert `rem` to `px`, you no longer need to import this preset separately as `presetWind4` provides this functionality internally.
+顺便说一句，如果您想使用 `presetRemToPx` 预设来将 `rem` 转换为 `px`，则无需再单独导入该预设，因为 `presetWind4` 已在内部提供了该功能。
 
 ```ts twoslash [uno.config.ts]
 import { createRemToPxProcessor } from '@unocss/preset-wind4/utils' // [!code ++]
@@ -212,21 +212,21 @@ export default defineConfig({
 })
 ```
 
-## Generated CSS
+## 生成的 CSS
 
-In the output of PresetWind4, three new layers have been added: `base`, `theme`, and `properties`.
+在 PresetWind4 的输出中新增了三个图层：`base`、`theme` 和 `properties`。
 
-|  Layer Name  |              Description              | order |
+|  图层名称  |              描述              | order |
 | :----------: | :-----------------------------------: | :---: |
-| `properties` | CSS properties defined by `@property` | -200  |
-|   `theme`    |      Theme-related CSS variables      | -150  |
-|    `base`    |      Base preflight/reset styles      | -100  |
+| `properties` | 由 `@property` 定义的 CSS 属性 | -200  |
+|   `theme`    |      与主题相关的 CSS 变量      | -150  |
+|    `base`    |      基础预加载/重置样式      | -100  |
 
-### `properties` Layer
+### `properties` 图层
 
-We have used `@property` to define CSS properties in many rules to achieve better performance and smaller size.
+我们在许多规则中使用 `@property` 来定义 CSS 属性，以实现更好的性能和更小的体积。
 
-For example, commonly used utilities like `text-op-xx`, `bg-op-xx`, and so on.
+例如，常用的工具类如 `text-op-xx`、`bg-op-xx` 等。
 
 ```css
 @property --un-text-opacity {
@@ -236,14 +236,14 @@ For example, commonly used utilities like `text-op-xx`, `bg-op-xx`, and so on.
 }
 ```
 
-### `theme` Layer
+### `theme` 图层
 
-We've placed theme-related CSS variables in the `theme` layer to make it easier for you to override and use directly.
-It can be comprehensive or on-demand. It always comes from your theme configuration.
+我们将与主题相关的 CSS 变量放在 `theme` 图层中，以便于您直接覆盖和使用。
+它可以是完整生成，也可以是按需生成。始终来自您的主题配置。
 
 ::: info
-The generated key names may not be exactly the same as `Tailwind4`. We try to avoid making significant changes to the key names in the theme to respect users migrating from `presetWind3`.
-You can also customize the output you want in the [Preflights Theme Process](#process).
+生成的键名可能与 Tailwind4 不完全相同。我们尽量避免对主题键名进行重大更改，以尊重从 `presetWind3` 迁移的用户。
+您也可以在 [Preflights Theme Process](#process) 中自定义输出。
 :::
 
 ```css
@@ -260,18 +260,18 @@ You can also customize the output you want in the [Preflights Theme Process](#pr
 }
 ```
 
-## Compatibility with Other Presets
+## 与其他预设的兼容性
 
-`PresetWind4` enhances and is compatible with `PresetWind3`. Since other packages were originally developed for `PresetWind3`, some issues may arise when using them together. Known issues include:
+`PresetWind4` 在功能上增强并兼容 `PresetWind3`。由于其他包最初是为 `PresetWind3` 开发的，在一起使用时可能会出现一些问题。已知问题包括：
 
 ### presetRemToPx
 
-`presetRemToPx` is no longer needed in `PresetWind4` as it is already included internally. You can remove it from your configuration.
+在 `PresetWind4` 中不再需要 `presetRemToPx`，因为它已内置。您可以从配置中移除它。
 
-Refer to the [`process`](#process) option in Options.
+请参考 [process](#process) 选项。
 
 ### presetLegacyCompat
 
-In `presetWind4`, we use the `oklch` color model to support better color contrast and color perception. Therefore, it is not compatible with `presetLegacyCompat` and is **not recommended** for use together.
+在 `presetWind4` 中，我们使用 `oklch` 颜色模型来支持更好的颜色对比度和颜色感知。因此，它与 `presetLegacyCompat` 不兼容，**不建议一起使用**。
 
-Please refer to the [Compatibility](#compatibility) section for more information.
+请参考 [兼容性](#compatibility) 部分以获取更多信息。

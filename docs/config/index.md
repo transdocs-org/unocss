@@ -1,295 +1,296 @@
 ---
-title: Configuring UnoCSS
-description: Configurations are what make UnoCSS powerful.
+title: 配置 UnoCSS
+description: 配置是 UnoCSS 强大的原因。
 outline: deep
 ---
 
-# Configuring UnoCSS
+# 配置 UnoCSS
 
-## Configuration
+## 配置
 
-Configurations are what make UnoCSS powerful.
+配置是 UnoCSS 强大的原因。
 
-- [Rules](/config/rules) - Define atomic CSS utilities
-- [Shortcuts](/config/shortcuts) - Combine multiple rules into a single shorthand.
-- [Theme](/config/theme) - Define theme variables.
-- [Variants](/config/variants) - Apply custom conventions to rules.
-- [Extractors](/config/extractors) - Define where and how the usage of utilities are extracted.
-- [Preflights](/config/preflights) - Define global raw CSS.
-- [Layers](/config/layers) - Define the order of each utilities layer.
-- [Presets](/config/presets) - Predefined configurations for common use cases.
-- [Transformers](/config/transformers) - Code transformers to user sources code to support conventions.
-- [Autocomplete](/config/autocomplete) - Define customized autocomplete suggestions.
+- [规则](/config/rules) - 定义原子 CSS 工具类
+- [快捷方式](/config/shortcuts) - 将多个规则组合成单个简写
+- [主题](/config/theme) - 定义主题变量
+- [变体](/config/variants) - 对规则应用自定义约定
+- [提取器](/config/extractors) - 定义从何处以及如何提取工具类的使用
+- [预置样式](/config/preflights) - 定义全局原始 CSS
+- [层级](/config/layers) - 定义每个工具类层级的顺序
+- [预设](/config/presets) - 常见用例的预定义配置
+- [转换器](/config/transformers) - 对用户源代码进行转换以支持约定的代码转换器
+- [自动补全](/config/autocomplete) - 定义自定义的自动补全建议
 
-## Options
+## 选项
 
 ### rules
 
-- **Type:** `Rule<Theme>[]`
+- **类型：** `Rule<Theme>[]`
 
-Rules to generate CSS utilities. Later entries have higher priority.
+用于生成 CSS 工具类的规则。后出现的条目优先级更高。
 
 ### shortcuts
 
-- **Type:** `UserShortcuts<Theme>`
+- **类型：** `UserShortcuts<Theme>`
 
-Similar to Windi CSS's shortcuts, allows you to create new utilities by combining existing ones. Later entries have higher priority.
+类似于 Windi CSS 的快捷方式，允许通过组合现有工具类创建新的工具类。后出现的条目优先级更高。
 
 ### theme
 
-- **Type:** `Theme`
+- **类型：** `Theme`
 
-Theme object for shared configuration between rules.
+用于规则之间共享配置的主题对象。
 
 ### extendTheme
 
-- **Type:** `Arrayable<ThemeExtender<Theme>>`
-  Custom functions mutate the theme object.
+- **类型：** `Arrayable<ThemeExtender<Theme>>`
 
-It's also possible to return a new theme object to completely replace the original one.
+自定义函数，用于修改主题对象。
+
+也可以返回一个新的主题对象来完全替换原始对象。
 
 ### variants
 
-- **Type:** `Variant<Theme>[]`
+- **类型：** `Variant<Theme>[]`
 
-Variants that preprocess the selectors, having the ability to rewrite the CSS object.
+预处理选择器的变体，能够重写 CSS 对象。
 
 ### extractors
 
-- **Type:** `Extractor[]`
+- **类型：** `Extractor[]`
 
-Extractors to handle the source file and output possible classes/selectors. Can be language-aware.
+处理源文件并输出可能的类/选择器的提取器。可以感知语言。
 
 ### preflights
 
-- **Type:** `Preflight<Theme>[]`
+- **类型：** `Preflight<Theme>[]`
 
-Raw CSS injections.
+原始 CSS 注入。
 
 ### layers
 
-- **Type:** `Record<string, number>`
+- **类型：** `Record<string, number>`
 
-Layer orders. Default to 0.
+层级顺序。默认为 0。
 
 ### outputToCssLayers
 
-- **Type:** `boolean | UseCssLayersOptions`
-- **Default:** `false`
+- **类型：** `boolean | UseCssLayersOptions`
+- **默认：** `false`
 
-Outputs the layers to CSS Cascade Layers.
+将层级输出到 CSS 层叠层级。
 
 #### cssLayerName
 
-- **Type:** `(internalLayer: string) => string | undefined | null`
+- **类型：** `(internalLayer: string) => string | undefined | null`
 
-Specifies the name of the CSS layer the internal layer should be output to (can be a sublayer e.g. "mylayer.mysublayer").
+指定内部层级应输出到的 CSS 层级名称（可以是子层级，例如 "mylayer.mysublayer"）。
 
-If `undefined` is return, the internal layer name wil be used as the CSS layer name.
-If `null` is return, the internal layer will not be output to a CSS layer.
+如果返回 `undefined`，则使用内部层级名称作为 CSS 层级名称。
+如果返回 `null`，则内部层级不会输出到 CSS 层级。
 
 ### sortLayers
 
-- **Type:** `(layers: string[]) => string[]`
+- **类型：** `(layers: string[]) => string[]`
 
-Custom function to sort layers.
+用于排序层级的自定义函数。
 
 ### presets
 
-- **Type:** `(PresetOrFactory<Theme> | PresetOrFactory<Theme>[])[]`
+- **类型：** `(PresetOrFactory<Theme> | PresetOrFactory<Theme>[])[]`
 
-Predefined configurations for common use cases.
+常见用例的预定义配置。
 
 ### transformers
 
-- **Type:** `SourceCodeTransformer[]`
+- **类型：** `SourceCodeTransformer[]`
 
-Custom transformers to the source code.
+对源代码的自定义转换器。
 
 ### blocklist
 
-- **Type:** `BlocklistRule[]`
+- **类型：** `BlocklistRule[]`
 
-Rules to exclude the selectors for your design system (to narrow down the possibilities). Combining `warnExcluded` options can also help you identify wrong usages.
+排除设计系统中选择器的规则（缩小可能性）。结合 `warnExcluded` 选项也可以帮助您识别错误的使用方式。
 
 ### safelist
 
-- **Type:** `string[]`
+- **类型：** `string[]`
 
-Utilities that are always included.
+始终包含的工具类。
 
 ### preprocess
 
-- **Type:** `Arrayable<Preprocessor>`
+- **类型：** `Arrayable<Preprocessor>`
 
-Preprocess the incoming utilities, return falsy value to exclude.
+预处理传入的工具类，返回假值以排除。
 
 ### postprocess
 
-- **Type:** `Arrayable<Postprocessor>`
+- **类型：** `Arrayable<Postprocessor>`
 
-Postprocess the generate utils object.
+后处理生成的工具对象。
 
 ### separators
 
-- **Type:** `Arrayable<string>`
-- **Default:** `[':', '-']`
+- **类型：** `Arrayable<string>`
+- **默认：** `[':', '-']`
 
-Variant separator.
+变体分隔符。
 
 ### extractorDefault
 
-- **Type:** `Extractor | null | false`
-- **Default:** `import('@unocss/core').defaultExtractor`
+- **类型：** `Extractor | null | false`
+- **默认：** `import('@unocss/core').defaultExtractor`
 
-Default extractor that are always applied. By default it split the source code by whitespace and quotes.
+始终应用的默认提取器。默认情况下，它按空格和引号分割源代码。
 
-It maybe be replaced by preset or user config, only one default extractor can be presented, later one will override the previous one.
+它可能被预设或用户配置替换，只能存在一个默认提取器，后出现的会覆盖之前的。
 
-Pass `null` or `false` to disable the default extractor.
+传入 `null` 或 `false` 以禁用默认提取器。
 
 ### autocomplete
 
-Additional options for auto complete.
+自动补全的附加选项。
 
 #### templates
 
-- **Type:** `Arrayable<AutoCompleteFunction | AutoCompleteTemplate>`
+- **类型：** `Arrayable<AutoCompleteFunction | AutoCompleteTemplate>`
 
-Custom functions / templates to provide autocomplete suggestions.
+提供自动补全建议的自定义函数 / 模板。
 
 #### extractors
 
-- **Type:** `Arrayable<AutoCompleteExtractor>`
+- **类型：** `Arrayable<AutoCompleteExtractor>`
 
-Custom extractors to pickup possible classes and transform class-name style suggestions to the correct format.
+拾取可能的类并转换类名样式建议为正确格式的自定义提取器。
 
 #### shorthands
 
-- **Type:** `Record<string, string | string[]>`
+- **类型：** `Record<string, string | string[]>`
 
-Custom shorthands to provide autocomplete suggestions. if values is an array, it will be joined with `|` and wrapped with `()`.
+提供自动补全建议的自定义快捷方式。如果值是数组，它将用 `|` 连接并用 `()` 包裹。
 
 ### content
 
-Options for sources to be extracted as utilities usages.
+用于提取工具类使用情况的源的选项。
 
-Supported sources:
+支持的源：
 
-- `filesystem` - extract from file system
-- `inline` - extract from plain inline text
-- `pipeline` - extract from build tools' transformation pipeline, such as Vite and Webpack
+- `filesystem` - 从文件系统提取
+- `inline` - 从纯内联文本中提取
+- `pipeline` - 从构建工具的转换管道中提取，例如 Vite 和 Webpack
 
-The usage extracted from each source will be **merged** together.
+从每个源提取的使用情况将合并在一起。
 
 #### filesystem
 
-- **Type:** `string[]`
-- **Default:** `[]`
+- **类型：** `string[]`
+- **默认：** `[]`
 
-Glob patterns to extract from the file system, in addition to other content sources. `node_modules` are ignored by default, but unocss will scan from it when you specify the path includes `node_modules`.
+除了其他内容源外，从文件系统提取的 glob 模式。默认忽略 `node_modules`，但当您指定的路径包含 `node_modules` 时，unocss 将从中扫描。
 
-In dev mode, the files will be watched and trigger HMR.
+在开发模式下，这些文件将被监听并触发 HMR。
 
 #### inline
 
-- **Type:** `string | { code: string; id?: string } | (() => Awaitable<string | { code: string; id?: string }>)) []`
+- **类型：** `string | { code: string; id?: string } | (() => Awaitable<string | { code: string; id?: string }>)) []`
 
-Inline text to be extracted.
+要提取的内联文本。
 
 #### pipeline
 
-Filters to determine whether to extract certain modules from the build tools' transformation pipeline.
+过滤器，用于确定是否从构建工具的转换管道中提取某些模块。
 
-Currently only works for Vite and Webpack integration.
+目前仅适用于 Vite 和 Webpack 集成。
 
-Set `false` to disable.
+设置为 `false` 以禁用。
 
 ##### include
 
-- **Type:** `FilterPattern`
-- **Default:** `[/\.(vue|svelte|[jt]sx|vine.ts|mdx?|astro|elm|php|phtml|html)($|\?)/]`
+- **类型：** `FilterPattern`
+- **默认：** `[/\.(vue|svelte|[jt]sx|vine.ts|mdx?|astro|elm|php|phtml|html)($|\?)/]`
 
-Patterns that filter the files being extracted. Supports regular expressions and `picomatch` glob patterns.
+过滤要提取的文件的模式。支持正则表达式和 `picomatch` glob 模式。
 
-By default, `.ts` and `.js` files are NOT extracted.
+默认情况下，**不会**提取 `.ts` 和 `.js` 文件。
 
 ##### exclude
 
-- **Type:** `FilterPattern`
-- **Default:** `[/\.(css|postcss|sass|scss|less|stylus|styl)($|\?)/]`
+- **类型：** `FilterPattern`
+- **默认：** `[/\.(css|postcss|sass|scss|less|stylus|styl)($|\?)/]`
 
-Patterns that filter the files NOT being extracted. Supports regular expressions and `picomatch` glob patterns.
+过滤**不**要提取的文件的模式。支持正则表达式和 `picomatch` glob 模式。
 
-By default, `node_modules` and `dist` are also extracted.
+默认情况下，`node_modules` 和 `dist` 也会被提取。
 
 ### configResolved
 
-- **Type:** `(config: ResolvedConfig) => void`
+- **类型：** `(config: ResolvedConfig) => void`
 
-Hook to modify the resolved config.
+用于修改解析后的配置的钩子。
 
-First presets runs first and the user config.
+首先运行预设，然后是用户配置。
 
 ### configFile
 
-- **Type:** `string | false`
+- **类型：** `string | false`
 
-Load from configs files.
+从配置文件加载。
 
-Set `false` to disable.
+设置为 `false` 以禁用。
 
 ### configDeps
 
-- **Type:** `string[]`
+- **类型：** `string[]`
 
-List of files that will also trigger config reloads.
+将触发配置重新加载的文件列表。
 
 ### cli
 
-UnoCSS CLI options.
+UnoCSS CLI 选项。
 
 #### entry
 
-- **Type:** `Arrayable<CliEntryItem>`
+- **类型：** `Arrayable<CliEntryItem>`
 
-UnoCSS cli entry points.
+UnoCSS CLI 的入口点。
 
 ##### patterns
 
-- **Type:** `string[]`
+- **类型：** `string[]`
 
-Glob patterns to extract from the file system.
+从文件系统提取的 glob 模式。
 
 ##### outFile
 
-- **Type:** `string`
+- **类型：** `string`
 
-Output file path.
+输出文件路径。
 
 ### shortcutsLayer
 
-- **Type:** `string`
-- **Default:** `'shortcuts'`
+- **类型：** `string`
+- **默认：** `'shortcuts'`
 
-Layout name of shortcuts.
+快捷方式的布局名称。
 
 ### envMode
 
-- **Type:** `'dev' | 'build'`
-- **Default:** `'build'`
+- **类型：** `'dev' | 'build'`
+- **默认：** `'build'`
 
-Environment mode.
+环境模式。
 
 ### details
 
-- **Type:** `boolean`
+- **类型：** `boolean`
 
-Expose internal details for debugging / inspecting.
+暴露内部细节用于调试 / 检查。
 
 ### warn
 
-- **Type:** `boolean`
-- **Default:** `true`
+- **类型：** `boolean`
+- **默认：** `true`
 
-Emit warning when matched selectors are presented in blocklist.
+当匹配的选择器出现在黑名单中时发出警告。

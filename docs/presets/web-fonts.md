@@ -1,18 +1,18 @@
 ---
-title: Web fonts preset
-description: Web fonts support for UnoCSS (@unocss/preset-web-fonts).
+title: 网络字体预设
+description: UnoCSS 对网络字体的支持（@unocss/preset-web-fonts）。
 outline: deep
 ---
 
-# Web Fonts preset
+# 网络字体预设
 
-Use web fonts from [Google Fonts](https://fonts.google.com/), [FontShare](https://www.fontshare.com/) by simply providing the font names.
+只需提供字体名称，即可轻松使用来自 [Google Fonts](https://fonts.google.com/) 和 [FontShare](https://www.fontshare.com/) 的网络字体。
 
-See [all supported providers](#providers).
+查看 [所有支持的供应商](#providers)。
 
-[Source Code](https://github.com/unocss/unocss/tree/main/packages-presets/preset-web-fonts)
+[源代码](https://github.com/unocss/unocss/tree/main/packages-presets/preset-web-fonts)
 
-## Installation
+## 安装
 
 ::: code-group
 
@@ -42,13 +42,13 @@ import { defineConfig } from 'unocss'
 export default defineConfig({
   presets: [
     presetWind3(),
-    presetWebFonts({ /* options */ }),
+    presetWebFonts({ /* 配置项 */ }),
   ],
 })
 ```
 
 ::: tip
-This preset is included in the `unocss` package, you can also import it from there:
+此预设已包含在 `unocss` 包中，也可以从那里导入：
 
 ```ts
 import { presetWebFonts } from 'unocss'
@@ -56,24 +56,24 @@ import { presetWebFonts } from 'unocss'
 
 :::
 
-## Providers
+## 供应商
 
-Currently supported Providers:
+当前支持的供应商：
 
-- `none` - do nothing, treat the font as system font
+- `none` - 不做任何处理，将字体视为系统字体
 - `google` - [Google Fonts](https://fonts.google.com/)
 - `bunny` - [Privacy-Friendly Google Fonts](https://fonts.bunny.net/)
-- `fontshare` - [Quality Font Service by ITF](https://www.fontshare.com/)
-- `fontsource` - [Self-Host Open Source Fonts in Neatly Bundled NPM Packages](https://fontsource.org/)
-- `coollabs` - [A Privacy-Friendly Drop-In Replacement for Google Fonts](https://fonts.coollabs.io/)
+- `fontshare` - [ITF 提供的高质量字体服务](https://www.fontshare.com/)
+- `fontsource` - [以 NPM 包形式提供的开源字体](https://fontsource.org/)
+- `coollabs` - [Google Fonts 的隐私友好替代方案](https://fonts.coollabs.io/)
 
 ::: info
-PR welcome to add more providers. 🙌
+欢迎提交 PR 添加更多供应商。🙌
 :::
 
-### Custom fetch function
+### 自定义获取函数
 
-Use your own function to fetch font source.
+使用你自己的函数来获取字体资源。
 
 ```ts [uno.config.ts]
 import presetWebFonts from '@unocss/preset-web-fonts'
@@ -86,7 +86,7 @@ export default defineConfig({
   presets: [
     presetWind3(),
     presetWebFonts({
-      // use axios with an https proxy
+      // 使用带有 HTTPS 代理的 axios
       customFetch: (url: string) => axios.get(url, { httpsAgent: new ProxyAgent('https://localhost:7890') }).then(it => it.data),
       provider: 'google',
       fonts: {
@@ -98,14 +98,14 @@ export default defineConfig({
 })
 ```
 
-## Options
+## 配置选项
 
 ### provider
 
-- **Type:** `WebFontsProviders`
-- **Default:** `google`
+- **类型：** `WebFontsProviders`
+- **默认值：** `google`
 
-Provider service of the web fonts.
+网络字体的服务提供商。
 
 ```ts
 type WebFontsProviders = 'google' | 'bunny' | 'fontshare' | 'fontsource' | 'coollabs' | 'none'
@@ -113,9 +113,9 @@ type WebFontsProviders = 'google' | 'bunny' | 'fontshare' | 'fontsource' | 'cool
 
 ### fonts
 
-- **Type:** `Record<string, WebFontMeta | string | (WebFontMeta | string)[]>`
+- **类型：** `Record<string, WebFontMeta | string | (WebFontMeta | string)[]>`
 
-The fonts. See [example](#example) for more details.
+字体配置。更多细节请参见 [示例](#示例)。
 
 ```ts
 interface WebFontMeta {
@@ -123,8 +123,8 @@ interface WebFontMeta {
   weights?: (string | number)[]
   italic?: boolean
   /**
-   * Override the provider
-   * @default <matches root config>
+   * 覆盖提供商配置
+   * @默认值 与根配置一致
    */
   provider?: WebFontsProviders
 }
@@ -132,42 +132,42 @@ interface WebFontMeta {
 
 ### extendTheme
 
-- **Type:** `boolean`
-- **Default:** `true`
+- **类型：** `boolean`
+- **默认值：** `true`
 
-Extend the theme object.
+扩展主题对象。
 
 ### themeKey
 
-- **Type:** `string`
-- **Default:** `fontFamily`
+- **类型：** `string`
+- **默认值：** `fontFamily`
 
-Key for the theme object.
+主题对象中的键名。
 
 ### inlineImports
 
-- **Type:** `boolean`
-- **Default:** `true`
+- **类型：** `boolean`
+- **默认值：** `true`
 
-Inline CSS `@import()`.
+内联 CSS 的 `@import()`。
 
 ### customFetch
 
-- **Type:** `(url: string) => Promise<string>`
-- **Default:** `undefined`
+- **类型：** `(url: string) => Promise<string>`
+- **默认值：** `undefined`
 
-Use your own function to fetch font source. See [Custom fetch function](#custom-fetch-function).
+使用自定义函数获取字体资源。参见 [自定义获取函数](#custom-fetch-function)。
 
-## Example
+## 示例
 
 ```ts
 presetWebFonts({
-  provider: 'google', // default provider
+  provider: 'google', // 默认提供商
   fonts: {
-    // these will extend the default theme
+    // 这些配置会扩展默认主题
     sans: 'Roboto',
     mono: ['Fira Code', 'Fira Mono:400,700'],
-    // custom ones
+    // 自定义字体
     lobster: 'Lobster',
     lato: [
       {
@@ -184,7 +184,7 @@ presetWebFonts({
 })
 ```
 
-The following CSS will be generated automatically:
+以下 CSS 将自动生成：
 
 <!-- eslint-skip -->
 
@@ -210,9 +210,9 @@ The following CSS will be generated automatically:
 }
 ```
 
-## Serve Fonts Locally
+## 本地提供字体
 
-By default the preset will fetch the fonts from the provider's CDN. If you want to serve the fonts locally, you can download the fonts and serve them from your own server using the processor from `@unocss/preset-web-fonts/local`.
+默认情况下，此预设将从提供商的 CDN 获取字体。如果你想从本地提供字体，可以使用 `@unocss/preset-web-fonts/local` 中的处理器下载字体并从你自己的服务器提供。
 
 ```ts
 import presetWebFonts from '@unocss/preset-web-fonts'
@@ -227,15 +227,15 @@ export default defineConfig({
         sans: 'Roboto',
         mono: 'Fira Code',
       },
-      // This will download the fonts and serve them locally
+      // 下载字体并从本地提供
       processors: createLocalFontProcessor({
-        // Directory to cache the fonts
+        // 字体缓存目录
         cacheDir: 'node_modules/.cache/unocss/fonts',
 
-        // Directory to save the fonts assets
+        // 字体资源保存目录
         fontAssetsDir: 'public/assets/fonts',
 
-        // Base URL to serve the fonts from the client
+        // 客户端访问字体的基准 URL
         fontServeBaseUrl: '/assets/fonts'
       })
     }),
@@ -243,10 +243,10 @@ export default defineConfig({
 })
 ```
 
-This will download the fonts assets to `public/assets/fonts` and serve them from `/assets/fonts` on the client. When doing this, please make sure the license of the fonts allows you to redistribute so, the tool is not responsible for any legal issues.
+这会将字体资源下载到 `public/assets/fonts` 并通过 `/assets/fonts` 提供给客户端。在这样做时，请确保字体的许可证允许你重新分发，此工具不承担任何法律问题。
 
 ::: info
 
-This feature is Node.js specific and will not work in the browser.
+此功能仅适用于 Node.js，无法在浏览器中运行。
 
 :::
